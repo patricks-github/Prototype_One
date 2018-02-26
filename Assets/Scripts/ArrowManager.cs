@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowManager : MonoBehaviour {
+public class ArrowManager : MonoBehaviour
+{
     //Singleton
     public static ArrowManager Instance;
 
@@ -14,6 +15,7 @@ public class ArrowManager : MonoBehaviour {
     //Public objects that can be referenced and seen by other objects.
     public SteamVR_TrackedObject trackedObj;
     public GameObject arrowPrefab;
+    public GameObject teleArrowPrefab;
     public GameObject stringAttachPoint;
     public GameObject arrowStartPoint;
     public GameObject stringStartPoint;
@@ -24,7 +26,8 @@ public class ArrowManager : MonoBehaviour {
     [SerializeField] float ReleaseStrength = 10.0f;
     [SerializeField] float MaxDrawDistance = 0.55f;
 
-    void Awake() {
+    void Awake()
+    {
         if (Instance == null)
             Instance = this;
     }
@@ -36,18 +39,44 @@ public class ArrowManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         AttachArrow();
         PullString();
-	}
 
-    private void PullString() {
-        if (isAttached) {
+        var device = SteamVR_Controller.Input((int)trackedObj.index);
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isAttached == false && currentArrow != null)
+        {
+            ToggleArrow();
+        }
+    }
+
+
+    private void ToggleArrow()
+    {
+        bool IsTeleArrow = currentArrow.GetComponent<Arrow>().isTeleportArrow;
+        Destroy(currentArrow);
+
+        if (IsTeleArrow == false)
+            currentArrow = Instantiate(teleArrowPrefab);
+        else
+            currentArrow = Instantiate(arrowPrefab);
+
+        currentArrow.transform.parent = trackedObj.transform;
+        currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.34f);
+        currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    private void PullString()
+    {
+        if (isAttached)
+        {
             //Gets distance between bow and pulling hand 
             float distance = (stringStartPoint.transform.position - trackedObj.transform.position).magnitude;
             if (distance > MaxDrawDistance)
@@ -59,7 +88,8 @@ public class ArrowManager : MonoBehaviour {
 
             //releases the arrow if the trigger is released
             var device = SteamVR_Controller.Input((int)trackedObj.index);
-            if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger)){
+            if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
+            {
                 FinalDrawDistance = distance;
                 ReleaseArrow();
             }
@@ -67,14 +97,15 @@ public class ArrowManager : MonoBehaviour {
     }
 
 
-    private void ReleaseArrow() {
+    private void ReleaseArrow()
+    {
         //Release the arrow and give it a velocity
         currentArrow.transform.parent = null;
         currentArrow.GetComponent<Arrow>().Fired();
         //currentArrow.GetComponent<BoxCollider>().isTrigger = false;
         currentArrow.GetComponent<Arrow>().ThisArrowTip.GetComponent<BoxCollider>().isTrigger = false;
         Rigidbody r = currentArrow.GetComponent<Rigidbody>();
-        r.velocity = currentArrow.transform.forward * (FinalDrawDistance /0.6f) * ReleaseStrength;
+        r.velocity = currentArrow.transform.forward * (FinalDrawDistance / 0.6f) * ReleaseStrength;
         r.useGravity = true;
 
         stringAttachPoint.transform.position = stringStartPoint.transform.position;
@@ -85,18 +116,21 @@ public class ArrowManager : MonoBehaviour {
     }
 
     //Attaching an Arrow to your hand if your hand currently is empty
-    private void AttachArrow() {
-        if (currentArrow == null) {
+    private void AttachArrow()
+    {
+        if (currentArrow == null)
+        {
             //create a copy of the arrowPrefab 
-           currentArrow = Instantiate(arrowPrefab);
+            currentArrow = Instantiate(arrowPrefab);
             currentArrow.transform.parent = trackedObj.transform;
             currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.34f);
-          //currentArrow.transform.localRotation = Quaternion.identity;
+            //currentArrow.transform.localRotation = Quaternion.identity;
             currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 
-    public void AttachBowToArrow() {
+    public void AttachBowToArrow()
+    {
         currentArrow.transform.parent = stringAttachPoint.transform;
 
         //Attach the arrow to a set position and rotation each time so it aligns with the bow and the string

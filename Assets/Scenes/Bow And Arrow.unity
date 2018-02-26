@@ -2939,6 +2939,8 @@ MonoBehaviour:
   trackedObj: {fileID: 832463437}
   arrowPrefab: {fileID: 1854339886240542, guid: cfb1e8a3f3f84cc4abacf835cbed8629,
     type: 2}
+  teleArrowPrefab: {fileID: 1854339886240542, guid: a07eb63eca81f434f839c85add4c603b,
+    type: 2}
   stringAttachPoint: {fileID: 1741688781}
   arrowStartPoint: {fileID: 39051781}
   stringStartPoint: {fileID: 1580582814}
