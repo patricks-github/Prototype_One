@@ -1,0 +1,305 @@
+fileFormatVersion: 2
+guid: 3adfbe12041414b459473de0a284abee
+timeCreated: 1519685346
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Roller_
+    100004: Roller_3Bone001
+    100006: Roller_Base
+    100008: Roller_Chin
+    100010: Roller_Control
+    100012: Roller_Eyes
+    100014: Roller_F_L_Chain_1
+    100016: Roller_F_L_Chain_2
+    100018: Roller_F_L_Chain_3
+    100020: Roller_F_L_Forearm
+    100022: Roller_F_L_Hand
+    100024: Roller_F_L_Platform
+    100026: Roller_F_R_Chain_1
+    100028: Roller_F_R_Chain_2
+    100030: Roller_F_R_Chain_3
+    100032: Roller_F_R_Forearm
+    100034: Roller_F_R_Hand
+    100036: Roller_F_R_Platform
+    100038: Roller_Forehead
+    100040: Roller_FrontLegs
+    100042: Roller_Head
+    100044: Roller_L_Wing
+    100046: Roller_L_Wing 1
+    100048: Roller_Mesh
+    100050: Roller_R_L_Chain_1
+    100052: Roller_R_L_Chain_2
+    100054: Roller_R_L_Chain_3
+    100056: Roller_R_L_Forearm
+    100058: Roller_R_L_Hand
+    100060: Roller_R_L_Platform
+    100062: Roller_R_R_Chain_1
+    100064: Roller_R_R_Chain_2
+    100066: Roller_R_R_Chain_3
+    100068: Roller_R_R_Forearm
+    100070: Roller_R_R_Hand
+    100072: Roller_R_R_Platform
+    100074: Roller_R_Wing
+    100076: Roller_R_Wing 1
+    100078: Roller_RearLegs
+    100080: Roller_Shell_1
+    100082: Roller_Shell_3
+    100084: Roller_Shell_3 1
+    100086: Roller_Shell_5
+    100088: Roller_Spine_1
+    100090: Roller_Spine_2
+    100092: Roller_Spine_3
+    100094: Roller_Spine_4
+    100096: Roller_Spine_5
+    400000: //RootNode
+    400002: Roller_
+    400004: Roller_3Bone001
+    400006: Roller_Base
+    400008: Roller_Chin
+    400010: Roller_Control
+    400012: Roller_Eyes
+    400014: Roller_F_L_Chain_1
+    400016: Roller_F_L_Chain_2
+    400018: Roller_F_L_Chain_3
+    400020: Roller_F_L_Forearm
+    400022: Roller_F_L_Hand
+    400024: Roller_F_L_Platform
+    400026: Roller_F_R_Chain_1
+    400028: Roller_F_R_Chain_2
+    400030: Roller_F_R_Chain_3
+    400032: Roller_F_R_Forearm
+    400034: Roller_F_R_Hand
+    400036: Roller_F_R_Platform
+    400038: Roller_Forehead
+    400040: Roller_FrontLegs
+    400042: Roller_Head
+    400044: Roller_L_Wing
+    400046: Roller_L_Wing 1
+    400048: Roller_Mesh
+    400050: Roller_R_L_Chain_1
+    400052: Roller_R_L_Chain_2
+    400054: Roller_R_L_Chain_3
+    400056: Roller_R_L_Forearm
+    400058: Roller_R_L_Hand
+    400060: Roller_R_L_Platform
+    400062: Roller_R_R_Chain_1
+    400064: Roller_R_R_Chain_2
+    400066: Roller_R_R_Chain_3
+    400068: Roller_R_R_Forearm
+    400070: Roller_R_R_Hand
+    400072: Roller_R_R_Platform
+    400074: Roller_R_Wing
+    400076: Roller_R_Wing 1
+    400078: Roller_RearLegs
+    400080: Roller_Shell_1
+    400082: Roller_Shell_3
+    400084: Roller_Shell_3 1
+    400086: Roller_Shell_5
+    400088: Roller_Spine_1
+    400090: Roller_Spine_2
+    400092: Roller_Spine_3
+    400094: Roller_Spine_4
+    400096: Roller_Spine_5
+    2100000: Material_001
+    4300000: Roller_Mesh
+    7400000: Idle
+    7400002: IntoBall
+    7400004: Rolling
+    7400006: OutBall
+    9500000: //RootNode
+    13700000: Roller_Mesh
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Idle
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: IntoBall
+      takeName: Take 001
+      firstFrame: 70
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Rolling
+      takeName: Take 001
+      firstFrame: 110
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: OutBall
+      takeName: Take 001
+      firstFrame: 140
+      lastFrame: 180
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 3
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
