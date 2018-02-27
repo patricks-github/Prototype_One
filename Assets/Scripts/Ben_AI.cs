@@ -4,21 +4,25 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Ben_AI : MonoBehaviour
-{  
+{
+    // Use this for initialization
     protected NavMeshAgent nav;               // Reference to the nav mesh agent.
     protected bool Aggro = false;
     protected bool Combat = false;
-    public bool isBoss = false;
     public Transform[] points;
     protected int destPoint = 0;
     protected float WaitTimer = 0.0f;
-    protected float SpeedTimer = 0.0f;
     protected float CombatTimer = 0.0f;
-    protected float IdleTimer = 0.0f;
+    protected float TargetTimer = 0.0f;
     public Transform target;
     protected Vector3 ChargeDestinationVector;
+    protected Vector3 targetDir;
+    protected Vector3 targetLocOld;
+    protected float angle;
+    protected float RandomWait;
     void Awake()
     {
+        RandomWait = Random.Range(15.0f, 25.0f);
         nav = GetComponent<NavMeshAgent>();
     }
 
@@ -29,103 +33,77 @@ public class Ben_AI : MonoBehaviour
 
     public void Update()
     {
-        Vector3 targetDir = target.position - transform.position;
-        float angle = Vector3.Angle(targetDir, transform.forward);
+        targetDir = target.position - this.gameObject.transform.position;
+        angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
         WaitTimer += Time.deltaTime;
-        SpeedTimer += Time.deltaTime;
-        if (Combat)
+        CombatTimer += Time.deltaTime;
+        TargetTimer += Time.deltaTime;
+
+        if (TargetTimer > 2.5f)
         {
-            CombatTimer += Time.deltaTime;
-            IdleTimer += Time.deltaTime;
-        }        
-        
-        if (angle < 10.0f)
+            targetLocOld = target.position;
+        }
+
+        if (angle < 5.0f)
         {
-           // Debug.Log("Called angle");
-            if (isBoss)
-            {
-              //  Debug.Log("Called Combat");
-                Combat = true;
-            }
-            else
-            {
-               // Debug.Log("Called Aggro");
-                Aggro = true;
-            }            
+            Debug.Log("Called Aggro");
+            Aggro = true;
         }
         else
         {
             Aggro = false;
         }
-        if (Combat)
+
+        if (targetDir.x < 10.0f && targetDir.z < 10.0f && Aggro)
+        {            
+            Combat = true;
+            Aggro = false;
+        }
+
+        if (Combat && (CombatTimer > 3.0f))
         {
-            if (IdleTimer > 8.0f)
+            CombatTimer = 0.0f;
+            nav.speed += 0.5f;
+            nav.SetDestination(targetLocOld);
+            /*this code here is for if the AI runs into the player. it can also be run in the collide, but thats been a bit janky
+             * if (target.position == this.gameObject.transform.position)
             {
-                Combat = false;
-                nav.ResetPath();
-            }
-            else
-            {
-                if (isBoss)
-                {
-                    if (CombatTimer > 3.0f)
-                    {
-                        CombatTimer = 0.0f;
-                        IdleTimer = 0.0f;
-                        Charge(target.position);
-                    }
-                }
-                else
-                {
-                    CombatTimer = 0.0f;
-                    IdleTimer = 0.0f;
-                    nav.speed += 0.5f;
-                    nav.SetDestination(target.position);
-                }
-            }
+                this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
+            }*/
         }
         else if (Aggro)
         {
-            nav.SetDestination(target.position);
+            nav.SetDestination(targetLocOld);
         }
         else
         {
             if (!nav.pathPending && nav.remainingDistance < 1.0f)
             {
-                if (nav.remainingDistance < 0.5f)
+                if (nav.remainingDistance < 1.5f)
                 {
                     nav.isStopped = true;
                 }
-                float RandomWait = Random.Range(5.0f, 10.0f);
                 if (WaitTimer >= RandomWait)
                 {
-                    nav.speed = 4.0f;
-                    nav.isStopped = false;
                     GotoNextPoint();
-                    WaitTimer = 0.0f;
                 }
             }
         }
 
-        }
+    }
     void OnCollisionEnter(Collision _collision)
     {
         if (_collision.gameObject.tag == "Player")
         {
-            CombatTimer = 0.0f;
-            Combat = true;
-            // nav.SetDestination(Player.position - PlayerCollideBounce);
-        }
-
-        if (_collision.gameObject.tag == "BossWall")
-        {
-            CombatTimer = 0.0f;
-            nav.speed = 4.0f;
+            //end game here? or just damage player
+            //this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
         }
     }
 
     public void GotoNextPoint()
     {
+        nav.isStopped = false;
+        WaitTimer = 0.0f;
         // Returns if no points have been set up
         if (points.Length == 0)
         {
@@ -137,13 +115,5 @@ public class Ben_AI : MonoBehaviour
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.Length;
-    }
-    void Charge(Vector3 _ChargeLoc)
-    {
-        Debug.Log("CHARGE");
-        nav.speed = 16.0f;
-        ChargeDestinationVector = (target.position - this.gameObject.transform.position);
-        ChargeDestinationVector = ChargeDestinationVector.normalized * 500.0f;
-        nav.SetDestination(ChargeDestinationVector);
     }
 }
