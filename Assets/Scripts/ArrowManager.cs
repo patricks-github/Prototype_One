@@ -136,8 +136,7 @@ public class ArrowManager : MonoBehaviour
             //create a copy of the arrowPrefab 
             currentArrow = Instantiate(arrowPrefab);
             currentArrow.transform.parent = trackedObj.transform;
-            currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.34f);
-            //currentArrow.transform.localRotation = Quaternion.identity;
+            currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.45f);
             currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }

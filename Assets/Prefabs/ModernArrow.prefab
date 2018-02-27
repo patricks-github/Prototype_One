@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 65937113127214930}
   m_Layer: 0
   m_Name: ArrowTip
-  m_TagString: Untagged
+  m_TagString: ArrowTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114171497743913574}
   m_Layer: 0
   m_Name: ModernArrow
-  m_TagString: Untagged
+  m_TagString: ArrowTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

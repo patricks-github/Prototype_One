@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 65278553569042266}
   m_Layer: 0
   m_Name: ArrowTip
-  m_TagString: Untagged
+  m_TagString: ArrowTip
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,5 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83f7e2dab83c4d044994a3b2c9de210e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTeleportArrow: 0
   ThisArrowTip: {fileID: 1138466513457504}
   MaxTimeAlive: 20

@@ -9,6 +9,7 @@ TagManager:
   - BossWall
   - ValidHitPoint
   - ArrowBreak
+  - ArrowTip
   layers:
   - Default
   - TransparentFX
