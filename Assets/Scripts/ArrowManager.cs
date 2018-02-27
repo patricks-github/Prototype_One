@@ -14,6 +14,7 @@ public class ArrowManager : MonoBehaviour
 
     //Public objects that can be referenced and seen by other objects.
     public SteamVR_TrackedObject trackedObj;
+    public GameObject Bow;
     public GameObject arrowPrefab;
     public GameObject teleArrowPrefab;
     public GameObject stringAttachPoint;
@@ -86,6 +87,13 @@ public class ArrowManager : MonoBehaviour
             //Debug.Log(distance.ToString());
             stringAttachPoint.transform.localPosition = new Vector3((stringStartPoint.transform.localPosition.x + distance + ArrowPositionXCompensation) * PullPowerCompensation, 0f, 0f);
 
+            //Rotate bow
+
+           // Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
+          //  Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
+
+
+
             //releases the arrow if the trigger is released
             var device = SteamVR_Controller.Input((int)trackedObj.index);
             if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
@@ -107,6 +115,8 @@ public class ArrowManager : MonoBehaviour
         Rigidbody r = currentArrow.GetComponent<Rigidbody>();
         r.velocity = currentArrow.transform.forward * (FinalDrawDistance / 0.6f) * ReleaseStrength;
         r.useGravity = true;
+
+        Bow.transform.localRotation = Quaternion.identity;
 
         stringAttachPoint.transform.position = stringStartPoint.transform.position;
 
