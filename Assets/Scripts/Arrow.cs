@@ -23,6 +23,18 @@ public class Arrow : MonoBehaviour
     {
         if (_other.gameObject.tag == "Bow")
             AttachArrow();
+
+        if (_other.gameObject.tag == "ValidHitPoint")
+        {
+            Debug.Log("HIT! :)");
+            Destroy(_other.transform.root.gameObject);
+        }
+
+        if (_other.gameObject.tag == "ArrowBreak")
+        {
+            Debug.Log("Arrow break");
+            Destroy(this);
+        }
     }
 
 

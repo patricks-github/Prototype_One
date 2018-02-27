@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ValidSurface
   - Bow
+  - BossWall
+  - ValidHitPoint
+  - ArrowBreak
   layers:
   - Default
   - TransparentFX
