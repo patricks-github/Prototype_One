@@ -9,6 +9,7 @@ public class Roller_Movement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         RollerAnimator = gameObject.GetComponent<Animator>();
+
 	}
 	
 	// Update is called once per frame
