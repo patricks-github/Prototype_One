@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -689,7 +689,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1020
+      value: 1038
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -1648,16 +1648,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 175268958}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6df5e2063975be4e9f035a7d0042c71, type: 3}
+  m_Script: {fileID: 11500000, guid: 403dc6e6194e48a41bbc274d94ab7c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
-  points:
-  - {fileID: 1709888543}
-  - {fileID: 1348995721}
-  - {fileID: 74048997}
-  - {fileID: 795923679}
-  target: {fileID: 584201553}
+  points: []
+  target: {fileID: 0}
 --- !u!23 &175268960
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8955,16 +8950,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1598210137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6df5e2063975be4e9f035a7d0042c71, type: 3}
+  m_Script: {fileID: 11500000, guid: d5563872e2c32044282429b4e413b6ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBoss: 0
-  points:
-  - {fileID: 1709888543}
-  - {fileID: 1348995721}
-  - {fileID: 74048997}
-  - {fileID: 795923679}
-  target: {fileID: 584201553}
+  points: []
+  target: {fileID: 0}
 --- !u!195 &1598210139
 NavMeshAgent:
   m_ObjectHideFlags: 0
