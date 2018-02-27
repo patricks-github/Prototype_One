@@ -72,6 +72,8 @@ public class Ben_Boss : MonoBehaviour
         }
     }
 
+ 
+
     public void GotoNextPoint()
     {
         // Returns if no points have been set up

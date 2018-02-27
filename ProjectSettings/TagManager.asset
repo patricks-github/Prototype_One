@@ -10,6 +10,7 @@ TagManager:
   - ValidHitPoint
   - ArrowBreak
   - ArrowTip
+  - Enemy
   layers:
   - Default
   - TransparentFX

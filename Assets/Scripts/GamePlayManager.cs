@@ -7,6 +7,8 @@ public class GamePlayManager : MonoBehaviour {
 
     public static GamePlayManager Instance;
 
+    [SerializeField] GameObject BossCreatureReference;
+
     public int PlayerHitPoints = 1;
     public int EnemiesRemaining;
     public bool IsBossDead = false;
@@ -40,9 +42,15 @@ public class GamePlayManager : MonoBehaviour {
             //No Enemies Remaining
         }
 
-        if (IsBossDead) {
+        if (BossCreatureReference == null) {
             //Win Game, Chance Scenes
             SceneManager.LoadScene("WinGame");
         }
 	}
+
+
+    public void HitPointsLost(int _HitPointsLost){
+        PlayerHitPoints -= _HitPointsLost;
+    }
+
 }
