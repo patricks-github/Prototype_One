@@ -49,7 +49,7 @@ public class Arrow : MonoBehaviour
             if (TimeAlive >= MaxTimeAlive)
             {
                 Destroy(this.gameObject);
-                ;
+                
             }
         }
 

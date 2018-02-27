@@ -9,8 +9,13 @@ TagManager:
   - BossWall
   - ValidHitPoint
   - ArrowBreak
+<<<<<<< HEAD
   - Wall
   - Floor
+=======
+  - ArrowTip
+  - Enemy
+>>>>>>> Thomas
   layers:
   - Default
   - TransparentFX

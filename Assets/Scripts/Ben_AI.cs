@@ -100,6 +100,7 @@ public class Ben_AI : MonoBehaviour
         }
     }
 
+
     public void GotoNextPoint()
     {
         nav.isStopped = false;
