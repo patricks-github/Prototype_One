@@ -18,6 +18,7 @@ public class Ben_AI : MonoBehaviour
     protected float WaitTimer = 0.0f;
     protected float SpeedTimer = 0.0f;
     protected float CombatTimer = 0.0f;
+    protected float IdleTimer = 0.0f;
     public Transform target;
     protected Vector3 ChargeDestinationVector;
     void Awake()
@@ -38,6 +39,7 @@ public class Ben_AI : MonoBehaviour
         WaitTimer += Time.deltaTime;
         SpeedTimer += Time.deltaTime;
         CombatTimer += Time.deltaTime;
+        IdleTimer += Time.deltaTime;
         if (angle < 10.0f)
         {
             Debug.Log("Called angle");
@@ -58,10 +60,19 @@ public class Ben_AI : MonoBehaviour
         }
 
         if (Combat && (CombatTimer > 3.0f))
-        {            
+        {
             if (isBoss)
             {
-                Charge(Player.position);
+                if (IdleTimer > 8.0f)
+                {
+                    IdleTimer = 0.0f;
+                    Combat = false;
+                }
+                else
+                {
+                    IdleTimer = 0.0f;
+                    Charge(Player.position);
+                }
             }
             else
             {
