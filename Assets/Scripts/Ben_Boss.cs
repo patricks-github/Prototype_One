@@ -10,7 +10,6 @@ public class Ben_Boss : MonoBehaviour
     protected bool Combat = false;
     public Transform[] points;
     protected int destPoint = 0;
-    protected float WaitTimer = 0.0f;
     protected float CombatTimer = 0.0f;
     protected float ChargeTimer = 0.0f;
     public Transform target;
@@ -32,7 +31,6 @@ public class Ben_Boss : MonoBehaviour
     {
         targetDir = target.position - this.gameObject.transform.position;
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
-        WaitTimer += Time.deltaTime;
         CombatTimer += Time.deltaTime;
         if (angle < 10.0f)
         {            
@@ -40,29 +38,26 @@ public class Ben_Boss : MonoBehaviour
             Combat = true;
         }
 
-        if (Combat && (CombatTimer > 3.0f))
+        if (Combat && (CombatTimer < 8.0f))
         {
-            Charge(target.position);
+            if (Combat && (CombatTimer > 3.0f))
+            {
+                Charge(target.position);
+            }
+        }
+        else if (Combat && (CombatTimer > 8.0f))
+        {
+            Combat = false;
         }
         else
         {
             if (!nav.pathPending && nav.remainingDistance < 1.0f)
             {
-                if (nav.remainingDistance < 1.5f)
-                {
-                    nav.isStopped = true;
-                }
-                float RandomWait = Random.Range(5.0f, 10.0f);
-                if (WaitTimer >= RandomWait)
-                {
-                    nav.speed = 4.0f;
-                    nav.isStopped = false;
-                    GotoNextPoint();
-                    WaitTimer = 0.0f;
-                }
+                nav.speed = 4.0f;
+                nav.isStopped = false;
+                GotoNextPoint();
             }
         }
-
     }
     void OnCollisionEnter(Collision _collision)
     {
@@ -94,6 +89,7 @@ public class Ben_Boss : MonoBehaviour
     void Charge(Vector3 _ChargeLoc)
     {
         ChargeTimer += Time.deltaTime;
+        CombatTimer = 0.0f;
         Debug.Log("CHARGE");
         nav.speed = 16.0f;
         ChargeDestinationVector = (target.position - this.gameObject.transform.position);

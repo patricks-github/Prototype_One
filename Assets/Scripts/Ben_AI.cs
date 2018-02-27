@@ -13,9 +13,11 @@ public class Ben_AI : MonoBehaviour
     protected int destPoint = 0;
     protected float WaitTimer = 0.0f;
     protected float CombatTimer = 0.0f;
+    protected float TargetTimer = 0.0f;
     public Transform target;
     protected Vector3 ChargeDestinationVector;
     protected Vector3 targetDir;
+    protected Vector3 targetLocOld;
     protected float angle;
     protected float RandomWait;
     void Awake()
@@ -35,7 +37,14 @@ public class Ben_AI : MonoBehaviour
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
         WaitTimer += Time.deltaTime;
         CombatTimer += Time.deltaTime;
-        if (angle < 1.0f)
+        TargetTimer += Time.deltaTime;
+
+        if (TargetTimer > 2.5f)
+        {
+            targetLocOld = target.position;
+        }
+
+        if (angle < 5.0f)
         {
             Debug.Log("Called Aggro");
             Aggro = true;
@@ -48,17 +57,23 @@ public class Ben_AI : MonoBehaviour
         if (targetDir.x < 10.0f && targetDir.z < 10.0f && Aggro)
         {            
             Combat = true;
+            Aggro = false;
         }
 
         if (Combat && (CombatTimer > 3.0f))
         {
             CombatTimer = 0.0f;
-            //nav.speed += 0.5f;
-            nav.SetDestination(target.position);
+            nav.speed += 0.5f;
+            nav.SetDestination(targetLocOld);
+            /*this code here is for if the AI runs into the player. it can also be run in the collide, but thats been a bit janky
+             * if (target.position == this.gameObject.transform.position)
+            {
+                this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
+            }*/
         }
         else if (Aggro)
         {
-            nav.SetDestination(target.position);
+            nav.SetDestination(targetLocOld);
         }
         else
         {
@@ -80,13 +95,8 @@ public class Ben_AI : MonoBehaviour
     {
         if (_collision.gameObject.tag == "Player")
         {
-          //end game here? or just damage player
-        }
-
-        if (_collision.gameObject.tag == "BossWall")
-        {
-            CombatTimer = 0.0f;
-            nav.speed = 4.0f;
+            //end game here? or just damage player
+            //this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
         }
     }
 
