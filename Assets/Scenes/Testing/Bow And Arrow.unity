@@ -1914,13 +1914,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 390180839}
-  m_LocalRotation: {x: 0.08715578, y: 0, z: 0, w: 0.9961947}
-  m_LocalPosition: {x: 0.75, y: 0, z: 0}
+  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalPosition: {x: 0, y: 0, z: 0.65000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 402543386}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 10, y: 0, z: 0}
+  m_Father: {fileID: 2122972926}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!136 &390180841
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2084,12 +2084,11 @@ Transform:
   m_PrefabParentObject: {fileID: 400044, guid: 1faabbf1c8c7b1f44aa1bbdc3793cbd6, type: 3}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 402543385}
-  m_LocalRotation: {x: -0, y: 0.64278764, z: -0.76604444, w: 0}
+  m_LocalRotation: {x: 0, y: 0.64278764, z: -0.76604444, w: 0}
   m_LocalPosition: {x: -0.88, y: 0.683, z: -0.19}
   m_LocalScale: {x: 0.1, y: 0.10000003, z: 0.10000003}
   m_Children:
   - {fileID: 2122972926}
-  - {fileID: 390180840}
   - {fileID: 628334855}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -2937,6 +2936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackedObj: {fileID: 832463437}
+  Bow: {fileID: 2122972925}
   arrowPrefab: {fileID: 1854339886240542, guid: cfb1e8a3f3f84cc4abacf835cbed8629,
     type: 2}
   teleArrowPrefab: {fileID: 1854339886240542, guid: a07eb63eca81f434f839c85add4c603b,
@@ -3556,7 +3556,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 402543386}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &628334856
 SkinnedMeshRenderer:
@@ -10324,6 +10324,7 @@ Transform:
   m_Children:
   - {fileID: 884172700}
   - {fileID: 1580582815}
+  - {fileID: 390180840}
   m_Father: {fileID: 402543386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
