@@ -28,6 +28,7 @@ public class Arrow : MonoBehaviour
         {
             Debug.Log("HIT! :)");
             Destroy(_other.transform.root.gameObject);
+            GamePlayManager.Instance.EnemiesRemaining--;
         }
 
         if (_other.gameObject.tag == "ArrowBreak")
@@ -74,7 +75,7 @@ public class Arrow : MonoBehaviour
     {
         //destroys arrow if Tip hits a valid surface 
         // Debug.Log("Teleport");
-        if (collision.gameObject.tag == "ValidSurface" && isTeleportArrow)
+        if (collision.gameObject.tag == "Floor" && isTeleportArrow)
         {
             TeleportManager.Instance.TeleportToLocation(this.GetComponentInChildren<Transform>().position);
             Destroy(this.gameObject);

@@ -4778,7 +4778,7 @@ GameObject:
   - component: {fileID: 1099962026}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: ValidSurface
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4991,7 +4991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163915b628bf1984bb0d9358b505d643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Ben_Testing
+  SceneToLoad: Quarry
 --- !u!23 &1179262450
 MeshRenderer:
   m_ObjectHideFlags: 0

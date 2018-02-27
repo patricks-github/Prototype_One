@@ -24,10 +24,12 @@ public class Ben_AI : MonoBehaviour
     {
         RandomWait = Random.Range(15.0f, 25.0f);
         nav = GetComponent<NavMeshAgent>();
+
     }
 
     void Start()
     {
+        GamePlayManager.Instance.EnemiesRemaining++;
         nav.autoBraking = false;
     }
 
