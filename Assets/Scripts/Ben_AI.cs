@@ -4,11 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class Ben_AI : MonoBehaviour
-{
-    // Use this for initialization
-    protected Transform Player;               // Reference to the player's position.
-                                              // PlayerHealth playerHealth;      // Reference to the player's health.
-                                              // EnemyHealth enemyHealth;        // Reference to this enemy's health.
+{  
     protected NavMeshAgent nav;               // Reference to the nav mesh agent.
     protected bool Aggro = false;
     protected bool Combat = false;
@@ -23,7 +19,6 @@ public class Ben_AI : MonoBehaviour
     protected Vector3 ChargeDestinationVector;
     void Awake()
     {
-        Player = GameObject.FindGameObjectWithTag("Player").transform;   
         nav = GetComponent<NavMeshAgent>();
     }
 
@@ -38,19 +33,23 @@ public class Ben_AI : MonoBehaviour
         float angle = Vector3.Angle(targetDir, transform.forward);
         WaitTimer += Time.deltaTime;
         SpeedTimer += Time.deltaTime;
-        CombatTimer += Time.deltaTime;
-        IdleTimer += Time.deltaTime;
+        if (Combat)
+        {
+            CombatTimer += Time.deltaTime;
+            IdleTimer += Time.deltaTime;
+        }        
+        
         if (angle < 10.0f)
         {
-            Debug.Log("Called angle");
+           // Debug.Log("Called angle");
             if (isBoss)
             {
-                Debug.Log("Called Combat");
+              //  Debug.Log("Called Combat");
                 Combat = true;
             }
             else
             {
-                Debug.Log("Called Aggro");
+               // Debug.Log("Called Aggro");
                 Aggro = true;
             }            
         }
@@ -58,40 +57,44 @@ public class Ben_AI : MonoBehaviour
         {
             Aggro = false;
         }
-
-        if (Combat && (CombatTimer > 3.0f))
+        if (Combat)
         {
-            if (isBoss)
+            if (IdleTimer > 8.0f)
             {
-                if (IdleTimer > 8.0f)
-                {
-                    IdleTimer = 0.0f;
-                    Combat = false;
-                }
-                else
-                {
-                    IdleTimer = 0.0f;
-                    Charge(Player.position);
-                }
+                Combat = false;
+                nav.ResetPath();
             }
             else
             {
-                CombatTimer = 0.0f;
-                nav.speed += 0.5f;
-                nav.SetDestination(Player.position);
+                if (isBoss)
+                {
+                    if (CombatTimer > 3.0f)
+                    {
+                        CombatTimer = 0.0f;
+                        IdleTimer = 0.0f;
+                        Charge(target.position);
+                    }
+                }
+                else
+                {
+                    CombatTimer = 0.0f;
+                    IdleTimer = 0.0f;
+                    nav.speed += 0.5f;
+                    nav.SetDestination(target.position);
+                }
             }
         }
         else if (Aggro)
-        {            
-            nav.SetDestination(Player.position);            
+        {
+            nav.SetDestination(target.position);
         }
         else
         {
             if (!nav.pathPending && nav.remainingDistance < 1.0f)
-            {                
+            {
                 if (nav.remainingDistance < 0.5f)
                 {
-                   nav.isStopped = true;
+                    nav.isStopped = true;
                 }
                 float RandomWait = Random.Range(5.0f, 10.0f);
                 if (WaitTimer >= RandomWait)
@@ -101,10 +104,10 @@ public class Ben_AI : MonoBehaviour
                     GotoNextPoint();
                     WaitTimer = 0.0f;
                 }
-            }                
+            }
         }
-                
-    }
+
+        }
     void OnCollisionEnter(Collision _collision)
     {
         if (_collision.gameObject.tag == "Player")
@@ -139,7 +142,7 @@ public class Ben_AI : MonoBehaviour
     {
         Debug.Log("CHARGE");
         nav.speed = 16.0f;
-        ChargeDestinationVector = (Player.position - this.gameObject.transform.position);
+        ChargeDestinationVector = (target.position - this.gameObject.transform.position);
         ChargeDestinationVector = ChargeDestinationVector.normalized * 500.0f;
         nav.SetDestination(ChargeDestinationVector);
     }
