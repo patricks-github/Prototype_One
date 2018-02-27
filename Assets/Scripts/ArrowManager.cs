@@ -23,7 +23,7 @@ public class ArrowManager : MonoBehaviour
 
     //Private objects that can be assigned through the editor like Publics.
     [SerializeField] float PullPowerCompensation = 10.0f;
-    [SerializeField] float ArrowPositionXCompensation = 1.0f;
+    [SerializeField] float ArrowPositionZCompensation = 1.0f;
     [SerializeField] float ReleaseStrength = 10.0f;
     [SerializeField] float MaxDrawDistance = 0.55f;
 
@@ -70,7 +70,7 @@ public class ArrowManager : MonoBehaviour
             currentArrow = Instantiate(arrowPrefab);
 
         currentArrow.transform.parent = trackedObj.transform;
-        currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.34f);
+        currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.42f);
         currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
 
@@ -85,7 +85,9 @@ public class ArrowManager : MonoBehaviour
                 distance = MaxDrawDistance;
             }
             //Debug.Log(distance.ToString());
-            stringAttachPoint.transform.localPosition = new Vector3((stringStartPoint.transform.localPosition.x + distance + ArrowPositionXCompensation) * PullPowerCompensation, 0f, 0f);
+
+            Bow.GetComponent<CompoundBowManager>().UpdateAnimation(distance / MaxDrawDistance);
+            stringAttachPoint.transform.localPosition = new Vector3(0f, 0f, (stringStartPoint.transform.localPosition.z + distance + ArrowPositionZCompensation) * PullPowerCompensation);
 
             //Rotate bow
 
@@ -113,10 +115,11 @@ public class ArrowManager : MonoBehaviour
         //currentArrow.GetComponent<BoxCollider>().isTrigger = false;
         currentArrow.GetComponent<Arrow>().ThisArrowTip.GetComponent<BoxCollider>().isTrigger = false;
         Rigidbody r = currentArrow.GetComponent<Rigidbody>();
-        r.velocity = currentArrow.transform.forward * (FinalDrawDistance / 0.6f) * ReleaseStrength;
+        r.velocity = currentArrow.transform.forward * (FinalDrawDistance / MaxDrawDistance) * ReleaseStrength;
         r.useGravity = true;
 
-        Bow.transform.localRotation = Quaternion.identity;
+       // Bow.transform.localRotation = Quaternion.identity;
+        Bow.GetComponent<CompoundBowManager>().ReleaseBowAnimation();
 
         stringAttachPoint.transform.position = stringStartPoint.transform.position;
 
