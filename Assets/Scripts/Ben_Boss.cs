@@ -54,6 +54,10 @@ public class Ben_Boss : MonoBehaviour
         else if (Combat && (CombatTimer > 8.0f))
         {
             Combat = false;
+            CombatTimer = 0.0f;
+            ChargeTimer = 0.0f;
+
+            GotoNextPoint();
         }
         else
         {
@@ -114,6 +118,7 @@ public class Ben_Boss : MonoBehaviour
 
             if (ChargeTimer > 1.0f)
             {
+                ChargeTimer = 0.0f;
                 //ChargeDestinationVector = this.gameObject.transform.position;
                 StartCharge = false;
             }

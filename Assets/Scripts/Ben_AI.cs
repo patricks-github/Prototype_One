@@ -13,7 +13,6 @@ public class Ben_AI : MonoBehaviour
     protected float WaitTimer = 0.0f;
     protected float CombatTimer = 0.0f;
     public Transform target;
-    protected Vector3 ChargeDestinationVector;
     protected Vector3 targetDir;
     protected float angle;
     protected float RandomWait;
@@ -60,6 +59,10 @@ public class Ben_AI : MonoBehaviour
         else if (Combat && (CombatTimer > 5.0f))
         {
             Combat = false;
+            WaitTimer = 0.0f;
+            CombatTimer = 0.0f;
+
+            GotoNextPoint();
         }
         else
         {
