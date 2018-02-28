@@ -7,25 +7,24 @@ public class Ben_AI : MonoBehaviour
 {
     // Use this for initialization
     protected NavMeshAgent nav;               // Reference to the nav mesh agent.
-    protected bool Aggro = false;
-    protected bool Combat = false;
+    public bool Combat = false;
     public Transform[] points;
     protected int destPoint = 0;
     protected float WaitTimer = 0.0f;
     protected float CombatTimer = 0.0f;
-    protected float TargetTimer = 0.0f;
     public Transform target;
     protected Vector3 ChargeDestinationVector;
     protected Vector3 targetDir;
-    protected Vector3 targetLocOld;
     protected float angle;
     protected float RandomWait;
+
+
     void Awake()
     {
         RandomWait = Random.Range(15.0f, 25.0f);
         nav = GetComponent<NavMeshAgent>();
-
     }
+
 
     void Start()
     {
@@ -33,53 +32,38 @@ public class Ben_AI : MonoBehaviour
         nav.autoBraking = false;
     }
 
+
     public void Update()
     {
         targetDir = target.position - this.gameObject.transform.position;
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
+
         WaitTimer += Time.deltaTime;
         CombatTimer += Time.deltaTime;
-        TargetTimer += Time.deltaTime;
 
-        if (TargetTimer > 2.5f)
+        if (angle < 10.0f && Combat == false && targetDir.x < 5.0f && targetDir.z < 5.0f)
         {
-            targetLocOld = target.position;
-        }
-
-        if (angle < 5.0f)
-        {
-            Debug.Log("Called Aggro");
-            Aggro = true;
-        }
-        else
-        {
-            Aggro = false;
-        }
-
-        if (targetDir.x < 10.0f && targetDir.z < 10.0f && Aggro)
-        {            
+            Debug.Log("In Combat");
             Combat = true;
-            Aggro = false;
         }
 
-        if (Combat && (CombatTimer > 3.0f))
+        if (Combat && (CombatTimer > 5.0f))
         {
             CombatTimer = 0.0f;
-            nav.speed += 0.5f;
-            nav.SetDestination(targetLocOld);
+            nav.SetDestination(target.position);
             /*this code here is for if the AI runs into the player. it can also be run in the collide, but thats been a bit janky
              * if (target.position == this.gameObject.transform.position)
             {
                 this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
             }*/
         }
-        else if (Aggro)
+        else if (Combat && (CombatTimer > 5.0f))
         {
-            nav.SetDestination(targetLocOld);
+            Combat = false;
         }
         else
         {
-            if (!nav.pathPending && nav.remainingDistance < 1.0f)
+            if (!nav.pathPending && nav.remainingDistance < 2.0f)
             {
                 if (nav.remainingDistance < 1.5f)
                 {
@@ -93,12 +77,14 @@ public class Ben_AI : MonoBehaviour
         }
 
     }
+
+
     void OnCollisionEnter(Collision _collision)
     {
         if (_collision.gameObject.tag == "Player")
         {
             //end game here? or just damage player
-            //this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
+            this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
         }
     }
 
