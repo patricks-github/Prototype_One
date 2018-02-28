@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VRBody : MonoBehaviour {
 
-    GameObject VRCamera;
+    public GameObject VRCamera;
 
     Vector3 cameraRotation;
     Vector3 currentRotation;
@@ -22,14 +22,14 @@ public class VRBody : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        VRCamera = transform.parent.GetChild(0).gameObject;
+       // VRCamera = transform.parent.GetChild(0).gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //Setting Variables
-        transform.position = VRCamera.transform.position;
+        //Setting Variablesd
+        transform.position = VRCamera.transform.position - new Vector3(0f, VRCamera.transform.localPosition.y / 2.0f, 0f);
         cameraRotation = new Vector3(0, VRCamera.transform.localEulerAngles.y, 0);
         currentRotation = new Vector3(0, transform.localEulerAngles.y, 0);
 
