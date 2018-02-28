@@ -87,7 +87,7 @@ public class Ben_AI : MonoBehaviour
         if (_collision.gameObject.tag == "Player")
         {
             //end game here? or just damage player
-            this.gameObject.transform.position = this.gameObject.transform.position.normalized * 2.5f;
+            nav.SetDestination(this.gameObject.transform.position.normalized * 2.5f);
         }
     }
 
