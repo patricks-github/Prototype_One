@@ -52,7 +52,7 @@ public class GamePlayManager : MonoBehaviour {
 
         if (EnemiesRemaining <= 0) {
             //No Enemies Remaining
-            SceneManager.LoadScene("WinGame");
+            //SceneManager.LoadScene("WinGame");
         }
 
         //if (BossCreatureReference == null) {
