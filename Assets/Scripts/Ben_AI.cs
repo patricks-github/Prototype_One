@@ -100,6 +100,12 @@ public class Ben_AI : MonoBehaviour
             CombatTimer = 0.0f;
             nav.SetDestination(this.gameObject.transform.position.normalized * 2.5f);
         }
+
+        if (_collision.gameObject.tag == "BossWall")
+        {
+            nav.SetDestination(this.gameObject.transform.position.normalized * -1.0f);
+            GotoNextPoint();
+        }
     }
 
 
