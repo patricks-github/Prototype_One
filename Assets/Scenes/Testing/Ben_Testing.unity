@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -689,12 +689,12 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 364
+      value: 1020
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -70
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
@@ -704,7 +704,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3, type: 2}
@@ -1306,7 +1306,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.44
+      value: -18.72
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1314,7 +1314,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.71
+      value: 17.1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
       propertyPath: m_LocalRotation.x
@@ -2310,7 +2310,7 @@ GameObject:
   - component: {fileID: 256480835}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: ValidSurface
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8965,6 +8965,10 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3adfbe12041414b459473de0a284abee, type: 3}
   m_IsPrefabParent: 0
@@ -8990,6 +8994,7 @@ MonoBehaviour:
   - {fileID: 74048997}
   - {fileID: 795923679}
   target: {fileID: 584201553}
+  Distance: 0
 --- !u!195 &1598210139
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9687,7 +9692,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1902134783}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 19.41, y: 0, z: -20.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1239053483}
