@@ -35,17 +35,20 @@ public class Ben_Boss : MonoBehaviour
         targetDir = target.position - this.gameObject.transform.position;
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
 
-        CombatTimer += Time.deltaTime;
-
-        if (angle < 20.0f)
+        if (Combat)
         {
-            Debug.Log("Called Combat");
+            CombatTimer += Time.deltaTime;
+        }
+
+        if (angle < 20.0f && Combat == false)
+        {
+            Debug.Log("Boss In Combat");
             Combat = true;
         }
 
         if (Combat && (CombatTimer < 8.0f))
         {
-            if (Combat && (CombatTimer > 3.0f))
+            if (Combat && (CombatTimer > 2.0f) && StartCharge == false)
             {
                 StartCharge = true;
                 Charge(target.position);
@@ -53,6 +56,8 @@ public class Ben_Boss : MonoBehaviour
         }
         else if (Combat && (CombatTimer > 8.0f))
         {
+            Debug.Log("Boss Left Combat");
+            StartCharge = false;
             Combat = false;
             CombatTimer = 0.0f;
             ChargeTimer = 0.0f;
@@ -80,6 +85,7 @@ public class Ben_Boss : MonoBehaviour
         }
         if (_collision.gameObject.tag == "BossWall")
         {
+            StartCharge = false;
             CombatTimer = 0.0f;
             nav.speed = 4.0f;
         }
@@ -112,16 +118,23 @@ public class Ben_Boss : MonoBehaviour
 
             nav.speed = 16.0f;
 
-            ChargeDestinationVector = (target.position - this.gameObject.transform.position);
-            ChargeDestinationVector = ChargeDestinationVector.normalized * 500.0f;
-            nav.SetDestination(ChargeDestinationVector);
+            //ChargeDestinationVector = (target.position - this.gameObject.transform.position);
+            //ChargeDestinationVector = ChargeDestinationVector.normalized * 10.0f;
+            //nav.SetDestination(ChargeDestinationVector);
+            nav.SetDestination(target.position);
 
-            if (ChargeTimer > 1.0f)
-            {
-                ChargeTimer = 0.0f;
-                //ChargeDestinationVector = this.gameObject.transform.position;
-                StartCharge = false;
-            }
+            //if (ChargeTimer > 1.0f)
+            //{
+            //    ChargeTimer = 0.0f;
+            //    //ChargeDestinationVector = this.gameObject.transform.position;
+            //    StartCharge = false;
+            //}
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(this.transform.position, nav.destination);
     }
 }

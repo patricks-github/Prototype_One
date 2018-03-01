@@ -10,12 +10,13 @@ public class Ben_AI : MonoBehaviour
     public bool Combat = false;
     public Transform[] points;
     protected int destPoint = 0;
-    protected float WaitTimer = 0.0f;
+    protected float WaitTimer = 20.0f;
     protected float CombatTimer = 0.0f;
     public Transform target;
     protected Vector3 targetDir;
     protected float angle;
     protected float RandomWait;
+    public float Distance;
 
 
     void Awake()
@@ -36,19 +37,26 @@ public class Ben_AI : MonoBehaviour
     {
         targetDir = target.position - this.gameObject.transform.position;
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
-
-        WaitTimer += Time.deltaTime;
-        CombatTimer += Time.deltaTime;
-
-        if (angle < 10.0f && Combat == false && targetDir.x < 5.0f && targetDir.z < 5.0f)
+        Distance = targetDir.magnitude;
+        if (nav.isStopped)
         {
-            Debug.Log("In Combat");
+            WaitTimer += Time.deltaTime;
+        }
+
+        if (Combat)
+        {
+            CombatTimer += Time.deltaTime;
+        }
+
+        if (angle < 10.0f && Combat == false && Distance <= 10.0f)
+        {
+           // Debug.Log(angle);
+            Debug.Log("AI In Combat");
             Combat = true;
         }
 
-        if (Combat && (CombatTimer > 5.0f))
+        if (Combat && (CombatTimer < 5.0f))
         {
-            CombatTimer = 0.0f;
             nav.SetDestination(target.position);
             /*this code here is for if the AI runs into the player. it can also be run in the collide, but thats been a bit janky
              * if (target.position == this.gameObject.transform.position)
@@ -58,6 +66,7 @@ public class Ben_AI : MonoBehaviour
         }
         else if (Combat && (CombatTimer > 5.0f))
         {
+            Debug.Log("AI Left Combat");
             Combat = false;
             WaitTimer = 0.0f;
             CombatTimer = 0.0f;
@@ -72,8 +81,9 @@ public class Ben_AI : MonoBehaviour
                 {
                     nav.isStopped = true;
                 }
-                if (WaitTimer >= RandomWait)
+                if (WaitTimer >= 5)
                 {
+                    nav.isStopped = false;
                     GotoNextPoint();
                 }
             }
@@ -87,6 +97,7 @@ public class Ben_AI : MonoBehaviour
         if (_collision.gameObject.tag == "Player")
         {
             //end game here? or just damage player
+            CombatTimer = 0.0f;
             nav.SetDestination(this.gameObject.transform.position.normalized * 2.5f);
         }
     }
@@ -107,5 +118,11 @@ public class Ben_AI : MonoBehaviour
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         destPoint = (destPoint + 1) % points.Length;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(this.transform.position, nav.destination);
     }
 }
