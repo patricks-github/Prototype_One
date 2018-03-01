@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4611147627938640}
   m_Layer: 0
   m_Name: Rubble
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4096545169496492}
   m_Layer: 0
   m_Name: StonePillar01
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

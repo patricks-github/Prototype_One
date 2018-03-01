@@ -36,9 +36,10 @@ GameObject:
   - component: {fileID: 4466297036536240}
   - component: {fileID: 33179921468179060}
   - component: {fileID: 23899331558667000}
+  - component: {fileID: 64282671020846498}
   m_Layer: 0
   m_Name: Rubble 1
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53,7 +54,7 @@ GameObject:
   - component: {fileID: 4960127818352748}
   m_Layer: 0
   m_Name: Rubble
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +66,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214152175017548}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00000030517577, y: 19.144318, z: -0.00000061035155}
+  m_LocalPosition: {x: 26.013475, y: 20.184553, z: -22.72598}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4960127818352748}
@@ -139,4 +140,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578440383417066}
+  m_Mesh: {fileID: 4300000, guid: cb9bf92951360f14588c2bb8537c69fb, type: 3}
+--- !u!64 &64282671020846498
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1578440383417066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: cb9bf92951360f14588c2bb8537c69fb, type: 3}
