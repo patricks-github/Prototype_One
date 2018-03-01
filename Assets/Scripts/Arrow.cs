@@ -21,17 +21,21 @@ public class Arrow : MonoBehaviour
 
     void OnTriggerEnter(Collider _other)
     {
+        //Arrow is in knocking Range
         if (_other.gameObject.tag == "Bow")
             AttachArrow();
 
-        if (_other.gameObject.tag == "ValidHitPoint")
+        //An enemy has been hit
+        if (_other.gameObject.tag == "ValidHitPoint" && isTeleportArrow == false && isFired)
         {
             Debug.Log("HIT! :)");
             Destroy(_other.transform.root.gameObject);
             GamePlayManager.Instance.EnemiesRemaining--;
+            GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
         }
 
-        if (_other.gameObject.tag == "ArrowBreak")
+        //Arrow hit solid surface, play break animations / effects
+        if (_other.gameObject.tag == "ArrowBreak" && isFired == true)
         {
             Debug.Log("Arrow break");
             Destroy(this);
@@ -77,7 +81,9 @@ public class Arrow : MonoBehaviour
         // Debug.Log("Teleport");
         if (collision.gameObject.tag == "Floor" && isTeleportArrow)
         {
-            TeleportManager.Instance.TeleportToLocation(this.GetComponentInChildren<Transform>().position);
+            Vector3 PositionToMoveToo = this.GetComponentInChildren<Transform>().position;
+            PositionToMoveToo.y = this.GetComponentInChildren<Transform>().position.y;
+            TeleportManager.Instance.TeleportToLocation(PositionToMoveToo);
             Destroy(this.gameObject);
         }
     }

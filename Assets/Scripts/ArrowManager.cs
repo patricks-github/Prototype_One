@@ -117,6 +117,7 @@ public class ArrowManager : MonoBehaviour
         Rigidbody r = currentArrow.GetComponent<Rigidbody>();
         r.velocity = currentArrow.transform.forward * (FinalDrawDistance / MaxDrawDistance) * ReleaseStrength;
         r.useGravity = true;
+        r.isKinematic = false;
 
        // Bow.transform.localRotation = Quaternion.identity;
         Bow.GetComponent<CompoundBowManager>().ReleaseBowAnimation();

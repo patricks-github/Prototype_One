@@ -10,12 +10,11 @@ public class GamePlayManager : MonoBehaviour {
     [SerializeField] GameObject BossCreatureReference;
 
     public int PlayerHitPoints = 1;
-    public int EnemiesRemaining = 1;
+    public int EnemiesRemaining = 0;
     public bool IsBossDead = false;
 
+    public bool AnEnemyHasBeenKilled = false;
 
-    private bool GameStarted;
-    private float Timer = 0.0f;
 
     void Awake()
     {
@@ -31,28 +30,21 @@ public class GamePlayManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () { 
-        GameStarted = true;
 
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        Timer += Time.deltaTime;
-        if(Timer >= 5.0f && GameStarted == true)
-        {
-            EnemiesRemaining--;
-            GameStarted = false;
-        }
 
         if (PlayerHitPoints <= 0) {
             //Game Over, Change Scenes
             SceneManager.LoadScene("GameOver");
         }
 
-        if (EnemiesRemaining <= 0) {
+        if (EnemiesRemaining <= 0 && AnEnemyHasBeenKilled) {
             //No Enemies Remaining
-            //SceneManager.LoadScene("WinGame");
+            SceneManager.LoadScene("WinGame");
         }
 
         //if (BossCreatureReference == null) {

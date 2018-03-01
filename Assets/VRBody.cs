@@ -59,4 +59,20 @@ public class VRBody : MonoBehaviour {
             transform.Rotate(Vector3.up * (headTurnSpeed * Time.deltaTime));
         }
     }
+
+    public void AttatchObjectToBody(GameObject _gameObject) {
+        _gameObject.transform.parent = this.gameObject.transform;
+
+        switch (_gameObject.tag) {
+            case "Bow":
+                //Places the bow on roughly the left hip using half the body's width
+                _gameObject.transform.localPosition = Vector3.zero + new Vector3(-0.5f, 0.0f, 0.0f);
+                _gameObject.transform.rotation = Quaternion.identity;
+                break;
+               
+            default:
+                break;
+        }
+    }
+
 }
