@@ -6,6 +6,12 @@ TagManager:
   tags:
   - ValidHitPoint
   - ArrowBreak
+  - BossWall
+  - Floor
+  - ArrowTip
+  - Bow
+  - Wall
+  - Enemy
   layers:
   - Default
   - TransparentFX
