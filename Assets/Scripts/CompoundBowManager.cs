@@ -51,6 +51,7 @@ public class CompoundBowManager : MonoBehaviour
             this.GetComponent<Rigidbody>().useGravity = false;
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
             VRBodyObject.GetComponent<VRBody>().AttatchObjectToBody(this.gameObject);
+            UpdateAnimation(0f);
         }
 
     }

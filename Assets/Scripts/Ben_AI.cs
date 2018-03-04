@@ -48,7 +48,7 @@ public class Ben_AI : MonoBehaviour
             CombatTimer += Time.deltaTime;
         }
 
-        if (angle < 10.0f && Combat == false && Distance <= 10.0f)
+        if (angle < 20.0f && Combat == false && Distance <= 20.0f)
         {
            // Debug.Log(angle);
             Debug.Log("AI In Combat");

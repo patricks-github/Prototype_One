@@ -42,14 +42,16 @@ public class ArrowManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         AttachArrow();
-        PullString();
+
+        if(isAttached)
+            PullString();
 
         var device = SteamVR_Controller.Input((int)trackedObj.index);
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isAttached == false && currentArrow != null)
@@ -76,8 +78,6 @@ public class ArrowManager : MonoBehaviour
 
     private void PullString()
     {
-        if (isAttached)
-        {
             //Gets distance between bow and pulling hand 
             float distance = (stringStartPoint.transform.position - trackedObj.transform.position).magnitude;
             if (distance > MaxDrawDistance)
@@ -92,9 +92,7 @@ public class ArrowManager : MonoBehaviour
             //Rotate bow
 
            // Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
-          //  Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
-
-
+           // Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
 
             //releases the arrow if the trigger is released
             var device = SteamVR_Controller.Input((int)trackedObj.index);
@@ -103,7 +101,6 @@ public class ArrowManager : MonoBehaviour
                 FinalDrawDistance = distance;
                 ReleaseArrow();
             }
-        }
     }
 
 
