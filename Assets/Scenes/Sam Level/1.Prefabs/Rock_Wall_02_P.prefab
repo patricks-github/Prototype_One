@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4064619500200768}
   - component: {fileID: 33683230265285366}
   - component: {fileID: 23747050707401620}
+  - component: {fileID: 64903494082202752}
   m_Layer: 0
   m_Name: Rock_Wall_02_P
   m_TagString: BossWall
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151099006317162}
+  m_Mesh: {fileID: 4300000, guid: 7e48969496b7fd14194a58ad108846cc, type: 3}
+--- !u!64 &64903494082202752
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151099006317162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7e48969496b7fd14194a58ad108846cc, type: 3}
