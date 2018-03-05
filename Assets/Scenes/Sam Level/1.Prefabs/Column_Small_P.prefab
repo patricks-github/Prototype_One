@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4909323381620954}
   - component: {fileID: 33703155851101688}
   - component: {fileID: 23870841629302050}
+  - component: {fileID: 64403547638990428}
   m_Layer: 0
   m_Name: Column_Small_P
   m_TagString: BossWall
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1807928066852558}
+  m_Mesh: {fileID: 4300000, guid: 3550e8691240b3e4cb4ab7769843606f, type: 3}
+--- !u!64 &64403547638990428
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807928066852558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 3550e8691240b3e4cb4ab7769843606f, type: 3}

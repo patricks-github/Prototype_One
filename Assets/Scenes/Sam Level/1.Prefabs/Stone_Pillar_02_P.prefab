@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4140604040120632}
   - component: {fileID: 33026621272760226}
   - component: {fileID: 23329809836442896}
+  - component: {fileID: 64133089159308900}
   m_Layer: 0
   m_Name: Stone_Pillar_02_P
   m_TagString: BossWall
@@ -81,4 +82,18 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442266701598170}
+  m_Mesh: {fileID: 4300000, guid: 98ab638e684108849a443aa4a74913e1, type: 3}
+--- !u!64 &64133089159308900
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442266701598170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 98ab638e684108849a443aa4a74913e1, type: 3}
