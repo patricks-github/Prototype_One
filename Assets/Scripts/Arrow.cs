@@ -40,6 +40,13 @@ public class Arrow : MonoBehaviour
             Debug.Log("Arrow break");
             Destroy(this);
         }
+        
+        //Ben - Arrow hit an interactable, adding arrows to your total
+        if (_other.gameObject.tag == "ArrowInteractable" && isFired)
+        {
+            //ArrowManager.Instance.ArrowsLeft += Ben_Interactable.Instance.ArrowsAdded;
+            ArrowManager.Instance.ArrowsLeft += 15;
+        }
     }
 
 

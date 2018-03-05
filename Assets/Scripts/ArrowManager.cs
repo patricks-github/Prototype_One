@@ -20,6 +20,7 @@ public class ArrowManager : MonoBehaviour
     public GameObject stringAttachPoint;
     public GameObject arrowStartPoint;
     public GameObject stringStartPoint;
+    public uint ArrowsLeft = 99;
 
     //Private objects that can be assigned through the editor like Publics.
     [SerializeField] float PullPowerCompensation = 10.0f;
@@ -49,14 +50,16 @@ public class ArrowManager : MonoBehaviour
     void Update()
     {
         AttachArrow();
-
-        if(isAttached)
-            PullString();
-
-        var device = SteamVR_Controller.Input((int)trackedObj.index);
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isAttached == false && currentArrow != null)
+        if (ArrowsLeft > 0)
         {
-            ToggleArrow();
+            if (isAttached)
+                PullString();
+
+            var device = SteamVR_Controller.Input((int)trackedObj.index);
+            if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isAttached == false && currentArrow != null)
+            {
+                ToggleArrow();
+            }
         }
     }
 
@@ -106,6 +109,8 @@ public class ArrowManager : MonoBehaviour
 
     private void ReleaseArrow()
     {
+        //Ben - reduce ArrowsLeft by 1
+        ArrowsLeft -= 1;
         //Release the arrow and give it a velocity
         currentArrow.transform.parent = null;
         currentArrow.GetComponent<Arrow>().Fired();

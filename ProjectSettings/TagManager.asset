@@ -12,6 +12,7 @@ TagManager:
   - Bow
   - Wall
   - Enemy
+  - ArrowInteractable
   layers:
   - Default
   - TransparentFX
