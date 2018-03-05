@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: ea91fe932cb1737439b9f08837e36aa3
-timeCreated: 1519864172
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,9 @@ ModelImporter:
     400004: Walls
     2100000: Wall_Rock_01_Mat
     2300000: Rock_Wall_1
+    2300002: //RootNode
     3300000: Rock_Wall_1
+    3300002: //RootNode
     4300000: Rock_Wall_1
   externalObjects:
   - first:

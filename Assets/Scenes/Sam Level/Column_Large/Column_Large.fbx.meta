@@ -13,7 +13,9 @@ ModelImporter:
     400004: Structures
     2100000: Column_Large_Mat
     2300000: Column_Large
+    2300002: //RootNode
     3300000: Column_Large
+    3300002: //RootNode
     4300000: Column_Large
   externalObjects:
   - first:

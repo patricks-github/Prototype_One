@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 58cb10eac3fe3cb4f9c9ff19ab132aeb
-timeCreated: 1519864141
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,9 @@ ModelImporter:
     400004: Structures
     2100000: Platform_01_Mat
     2300000: Platform_01
+    2300002: //RootNode
     3300000: Platform_01
+    3300002: //RootNode
     4300000: Platform_01
   externalObjects:
   - first:

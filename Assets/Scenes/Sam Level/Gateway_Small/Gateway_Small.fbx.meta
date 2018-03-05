@@ -1,26 +1,28 @@
 fileFormatVersion: 2
-guid: ddfd033e1f3db914e83f676d31c6d6df
-timeCreated: 1519864134
+guid: 9f0dc7dc95db0544191266ec7d952324
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Gateway_Medium
+    100002: Gateway_Small
     100004: Gateways
     400000: //RootNode
-    400002: Gateway_Medium
+    400002: Gateway_Small
     400004: Gateways
-    2100000: Gateway_01_Mat
-    2300000: Gateway_Medium
-    3300000: Gateway_Medium
-    4300000: Gateway_Medium
+    2100000: Gateway_02_Mat
+    2300000: Gateway_Small
+    2300002: //RootNode
+    3300000: Gateway_Small
+    3300002: //RootNode
+    4300000: Gateway_Small
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gateway_01_Mat
-    second: {fileID: 2100000, guid: 1b9aa4338b0194944b32dc9440518f02, type: 2}
+      name: Gateway_02_Mat
+    second: {fileID: 2100000, guid: 8b168eee51d297044989729f2a2a6304, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

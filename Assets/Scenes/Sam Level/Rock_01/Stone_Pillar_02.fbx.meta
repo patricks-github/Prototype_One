@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 98ab638e684108849a443aa4a74913e1
-timeCreated: 1519864154
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -12,14 +12,22 @@ ModelImporter:
     400002: Stone_Pillar_02
     400004: //RootNode
     2100000: Stone_01_Mat
+    2100002: Stone_01_Mat1
     2300000: Stone_Pillar_02
+    2300002: //RootNode
     3300000: Stone_Pillar_02
+    3300002: //RootNode
     4300000: Stone_Pillar_02
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Stone_01_Mat
+    second: {fileID: 2100000, guid: da602c1f54cc4f7458fc3debe1e39f5e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stone_01_Mat1
     second: {fileID: 2100000, guid: da602c1f54cc4f7458fc3debe1e39f5e, type: 2}
   materials:
     importMaterials: 1

@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3550e8691240b3e4cb4ab7769843606f
-timeCreated: 1519864116
+timeCreated: 1520211271
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,9 @@ ModelImporter:
     400004: Structures
     2100000: Column_Small_Mat
     2300000: Column_Small
+    2300002: //RootNode
     3300000: Column_Small
+    3300002: //RootNode
     4300000: Column_Small
   externalObjects:
   - first:

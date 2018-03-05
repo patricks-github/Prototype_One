@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: cb9bf92951360f14588c2bb8537c69fb
-timeCreated: 1519864183
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,8 +13,11 @@ ModelImporter:
     400004: //RootNode
     2100000: Rubble_01_Mat
     2300000: Rubble 1
+    2300002: //RootNode
     3300000: Rubble 1
+    3300002: //RootNode
     4300000: Rubble
+    4300002: Rubble_01
   externalObjects:
   - first:
       type: UnityEngine:Material
