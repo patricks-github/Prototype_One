@@ -13,7 +13,8 @@ public class ArrowManager : MonoBehaviour
     private float FinalDrawDistance = 0.0f;
 
     //Public objects that can be referenced and seen by other objects.
-    public SteamVR_TrackedObject trackedObj;
+    public SteamVR_TrackedObject OffHand;
+    public SteamVR_TrackedObject BoWHand;
     public GameObject Bow;
     public GameObject arrowPrefab;
     public GameObject teleArrowPrefab;
@@ -44,7 +45,8 @@ public class ArrowManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        OffHand = null;
+        BoWHand = null;
     }
 
     // Update is called once per frame
@@ -53,16 +55,14 @@ public class ArrowManager : MonoBehaviour
         if (ArrowsLeft > TotalArrows)
             ArrowsLeft = TotalArrows;
 
-
-        
-
         //AttachArrow();
-        if (ArrowsLeft > 0)
+
+        if (ArrowsLeft > 0 && OffHand !=null)
         {
             if (isAttached)
                 PullString();
 
-            var device = SteamVR_Controller.Input((int)trackedObj.index);
+            var device = SteamVR_Controller.Input((int)OffHand.index);
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad) && isAttached == false && currentArrow != null)
             {
                 ToggleArrow();
@@ -81,7 +81,7 @@ public class ArrowManager : MonoBehaviour
         else
             currentArrow = Instantiate(arrowPrefab);
 
-        currentArrow.transform.parent = trackedObj.transform;
+        currentArrow.transform.parent = OffHand.transform;
         currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.42f);
         currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
@@ -89,7 +89,7 @@ public class ArrowManager : MonoBehaviour
     private void PullString()
     {
             //Gets distance between bow and pulling hand 
-            float distance = (stringStartPoint.transform.position - trackedObj.transform.position).magnitude;
+            float distance = (stringStartPoint.transform.position - OffHand.transform.position).magnitude;
             if (distance > MaxDrawDistance)
             {
                 distance = MaxDrawDistance;
@@ -99,13 +99,14 @@ public class ArrowManager : MonoBehaviour
             Bow.GetComponent<CompoundBowManager>().UpdateAnimation(distance / MaxDrawDistance);
             stringAttachPoint.transform.localPosition = new Vector3(0f, 0f, (stringStartPoint.transform.localPosition.z + distance + ArrowPositionZCompensation) * PullPowerCompensation);
 
-            //Rotate bow
+        //Rotate bow
 
-            //Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
-            //Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
+        //Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
+        //Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
+        //Bow.transform.rotation = Quaternion.LookRotation(Bow.transform.position - trackedObj.transform.position, Bow.transform.TransformDirection(Vector3.forward));
 
-            //releases the arrow if the trigger is released
-            var device = SteamVR_Controller.Input((int)trackedObj.index);
+        //releases the arrow if the trigger is released
+        var device = SteamVR_Controller.Input((int)OffHand.index);
             if (device.GetTouchUp(SteamVR_Controller.ButtonMask.Trigger))
             {
                 FinalDrawDistance = distance;
@@ -141,11 +142,11 @@ public class ArrowManager : MonoBehaviour
     //Attaching an Arrow to your hand if your hand currently is empty
     public void AttachArrow()
     {
-        if (currentArrow == null)
+        if (currentArrow == null && OffHand != null)
         {
             //create a copy of the arrowPrefab 
             currentArrow = Instantiate(arrowPrefab);
-            currentArrow.transform.parent = trackedObj.transform;
+            currentArrow.transform.parent = OffHand.transform;
             currentArrow.transform.localPosition = new Vector3(0f, 0f, 0.45f);
             currentArrow.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
