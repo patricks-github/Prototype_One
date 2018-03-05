@@ -40,6 +40,14 @@ public class Arrow : MonoBehaviour
             Debug.Log("Arrow break");
             Destroy(this);
         }
+        
+        //Ben - Arrow hit an interactable, adding arrows to your total
+        if (_other.gameObject.tag == "ArrowInteractable" && isFired)
+        {
+            //ArrowManager.Instance.ArrowsLeft += Ben_Interactable.Instance.ArrowsAdded;
+            ArrowManager.Instance.ArrowsLeft += 15;
+            Destroy(_other.transform.root.gameObject);
+        }
     }
 
 
@@ -84,6 +92,10 @@ public class Arrow : MonoBehaviour
             Vector3 PositionToMoveToo = this.GetComponentInChildren<Transform>().position;
             PositionToMoveToo.y = this.GetComponentInChildren<Transform>().position.y;
             TeleportManager.Instance.TeleportToLocation(PositionToMoveToo);
+            Destroy(this.gameObject);
+        }
+        else if (collision.gameObject.tag == "Floor" && !isTeleportArrow)
+        {           
             Destroy(this.gameObject);
         }
     }
