@@ -94,6 +94,10 @@ public class Arrow : MonoBehaviour
             TeleportManager.Instance.TeleportToLocation(PositionToMoveToo);
             Destroy(this.gameObject);
         }
+        else if (collision.gameObject.tag == "Floor" && !isTeleportArrow)
+        {           
+            Destroy(this.gameObject);
+        }
     }
 }
 
