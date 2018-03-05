@@ -61,15 +61,20 @@ public class VRBody : MonoBehaviour {
     }
 
     public void AttatchObjectToBody(GameObject _gameObject) {
-        _gameObject.transform.parent = this.gameObject.transform;
-
+       
         switch (_gameObject.tag) {
             case "Bow":
                 //Places the bow on roughly the left hip using half the body's width
+                _gameObject.transform.parent = this.gameObject.transform;
                 _gameObject.transform.localPosition = Vector3.zero + new Vector3(-0.5f, 0.0f, 0.0f);
                 _gameObject.transform.rotation = Quaternion.identity;
                 break;
-               
+
+            case "Attachable":
+                //Regular Game object, attach it to body
+                _gameObject.transform.parent = this.gameObject.transform;
+                break;
+
             default:
                 break;
         }

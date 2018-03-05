@@ -20,6 +20,7 @@ public class ArrowManager : MonoBehaviour
     public GameObject stringAttachPoint;
     public GameObject arrowStartPoint;
     public GameObject stringStartPoint;
+    public uint TotalArrows = 99;
     public uint ArrowsLeft = 99;
 
     //Private objects that can be assigned through the editor like Publics.
@@ -49,7 +50,13 @@ public class ArrowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AttachArrow();
+        if (ArrowsLeft > TotalArrows)
+            ArrowsLeft = TotalArrows;
+
+
+        
+
+        //AttachArrow();
         if (ArrowsLeft > 0)
         {
             if (isAttached)
@@ -94,8 +101,8 @@ public class ArrowManager : MonoBehaviour
 
             //Rotate bow
 
-           // Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
-           // Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
+            //Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
+            //Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
 
             //releases the arrow if the trigger is released
             var device = SteamVR_Controller.Input((int)trackedObj.index);
@@ -132,7 +139,7 @@ public class ArrowManager : MonoBehaviour
     }
 
     //Attaching an Arrow to your hand if your hand currently is empty
-    private void AttachArrow()
+    public void AttachArrow()
     {
         if (currentArrow == null)
         {
