@@ -46,6 +46,7 @@ public class Arrow : MonoBehaviour
         {
             //ArrowManager.Instance.ArrowsLeft += Ben_Interactable.Instance.ArrowsAdded;
             ArrowManager.Instance.ArrowsLeft += 15;
+            Destroy(_other.transform.root.gameObject);
         }
     }
 
