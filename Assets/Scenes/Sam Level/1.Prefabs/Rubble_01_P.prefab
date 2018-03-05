@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23046366943784600}
   m_Layer: 0
   m_Name: Rubble_01_P
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

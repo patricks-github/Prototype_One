@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23691889011734120}
   m_Layer: 0
   m_Name: Rock_Wall_01_P
-  m_TagString: Untagged
+  m_TagString: BossWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
