@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4009631798529906}
   - component: {fileID: 33468061732011202}
   - component: {fileID: 23895024386971942}
-  - component: {fileID: 64590907466129702}
   m_Layer: 0
   m_Name: Gateway_Small_P
   m_TagString: BossWall
@@ -82,18 +81,4 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1682929881996972}
-  m_Mesh: {fileID: 4300000, guid: 9f0dc7dc95db0544191266ec7d952324, type: 3}
---- !u!64 &64590907466129702
-MeshCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1682929881996972}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 9f0dc7dc95db0544191266ec7d952324, type: 3}
