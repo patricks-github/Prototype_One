@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: c0d2d1ca976944f4c97cec5f4c96358c
-timeCreated: 1519864154
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,9 @@ ModelImporter:
     400004: //RootNode
     2100000: Stone_01_Mat
     2300000: Stone_Pillar_01
+    2300002: //RootNode
     3300000: Stone_Pillar_01
+    3300002: //RootNode
     4300000: Stone_Pillar_01
   externalObjects:
   - first:

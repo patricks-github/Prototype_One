@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 6307dbb373e055f49a298862d1fddea1
-timeCreated: 1519864187
+timeCreated: 1520211440
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -13,7 +13,9 @@ ModelImporter:
     400004: Steps_Huge
     2100000: Step_Huge_Mat
     2300000: Step_Huge
+    2300002: //RootNode
     3300000: Step_Huge
+    3300002: //RootNode
     4300000: Step_Huge
   externalObjects:
   - first:
