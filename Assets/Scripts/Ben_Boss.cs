@@ -18,6 +18,9 @@ public class Ben_Boss : MonoBehaviour
     public float Distance;
     public uint HitPoints = 5;
 
+    public bool IsDown = false;
+    public float TimeIsDown = 8f;
+
 
     void Awake()
     {
@@ -33,51 +36,69 @@ public class Ben_Boss : MonoBehaviour
 
     public void Update()
     {
-        targetDir = target.position - this.gameObject.transform.position;
-        angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
-        Distance = targetDir.magnitude;
-
-        if (Combat)
+        if (!IsDown)
         {
-            CombatTimer += Time.deltaTime;
-        }
+            targetDir = target.position - this.gameObject.transform.position;
+            angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
+            Distance = targetDir.magnitude;
 
-        if (angle < 35.0f && Combat == false && Distance <= 35.0f)
-        {
-            Debug.Log("Boss In Combat");
-            Combat = true;
-        }
-
-        if (Combat && (CombatTimer < 21.0f))
-        {
-            if (Combat && (CombatTimer > 1.5f) && StartCharge == false)
+            if (Combat)
             {
-                StartCharge = true;
-                Charge(target.position);
+                CombatTimer += Time.deltaTime;
             }
-        }
-        else if (Combat && (CombatTimer > 21.0f))
-        {
-            Debug.Log("Boss Left Combat");
 
-            StartCharge = false;
-            Combat = false;
-            CombatTimer = 0.0f;
-
-            nav.speed = 4.0f;
-
-            GotoNextPoint();
-        }
-        else
-        {
-            if (!nav.pathPending && nav.remainingDistance < 1.0f)
+            if (angle < 35.0f && Combat == false && Distance <= 35.0f)
             {
+                Debug.Log("Boss In Combat");
+                Combat = true;
+            }
+
+            if (Combat && (CombatTimer < 21.0f))
+            {
+                if (Combat && (CombatTimer > 1.5f) && StartCharge == false)
+                {
+                    StartCharge = true;
+                    Charge(target.position);
+                }
+            }
+            else if (Combat && (CombatTimer > 21.0f))
+            {
+                Debug.Log("Boss Left Combat");
+
+                StartCharge = false;
+                Combat = false;
+                CombatTimer = 0.0f;
+
                 nav.speed = 4.0f;
-                nav.isStopped = false;
 
                 GotoNextPoint();
             }
+            else
+            {
+                if (!nav.pathPending && nav.remainingDistance < 1.0f)
+                {
+                    nav.speed = 4.0f;
+                    nav.isStopped = false;
+
+                    GotoNextPoint();
+                }
+            }
         }
+    }
+
+
+    public void SetIsDown() {
+        IsDown = true;
+        nav.isStopped = true;
+        this.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+        Invoke("Recover", TimeIsDown);
+
+    }
+
+    private void Recover() {
+        IsDown = false;
+        nav.isStopped = false;
+        this.transform.rotation = Quaternion.identity;
     }
 
 

@@ -15,6 +15,7 @@ TagManager:
   - ArrowInteractable
   - Attachable
   - Ben_Boss
+  - BossWeakPoint
   layers:
   - Default
   - TransparentFX
