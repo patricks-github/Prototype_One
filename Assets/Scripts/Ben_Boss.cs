@@ -10,7 +10,6 @@ public class Ben_Boss : MonoBehaviour
     public Transform[] points;
     protected int destPoint = 0;
     protected float CombatTimer = 0.0f;
-    protected float ChargeTimer = 0.0f;
     public Transform target;
     protected Vector3 ChargeDestinationVector;
     protected Vector3 targetDir;
@@ -48,21 +47,23 @@ public class Ben_Boss : MonoBehaviour
             Combat = true;
         }
 
-        if (Combat && (CombatTimer < 8.0f))
+        if (Combat && (CombatTimer < 21.0f))
         {
-            if (Combat && (CombatTimer > 2.0f) && StartCharge == false)
+            if (Combat && (CombatTimer > 1.5f) && StartCharge == false)
             {
                 StartCharge = true;
                 Charge(target.position);
             }
         }
-        else if (Combat && (CombatTimer > 8.0f))
+        else if (Combat && (CombatTimer > 21.0f))
         {
             Debug.Log("Boss Left Combat");
+
             StartCharge = false;
             Combat = false;
             CombatTimer = 0.0f;
-            ChargeTimer = 0.0f;
+
+            nav.speed = 4.0f;
 
             GotoNextPoint();
         }
@@ -113,7 +114,6 @@ public class Ben_Boss : MonoBehaviour
     {
         if (StartCharge)
         {
-            ChargeTimer += Time.deltaTime;
             CombatTimer = 0.0f;
 
             Debug.Log("CHARGE");
