@@ -17,6 +17,7 @@ public class Ben_Boss : MonoBehaviour
     public bool StartCharge = false;
     public float Distance;
     public uint HitPoints = 5;
+    private Boss_Movement ThisBossMovement;
 
 
     void Awake()
@@ -27,6 +28,8 @@ public class Ben_Boss : MonoBehaviour
 
     void Start()
     {
+        ThisBossMovement = this.GetComponent<Boss_Movement>();
+        GamePlayManager.Instance.EnemiesRemaining++;
         nav.autoBraking = false;
     }
 
@@ -42,7 +45,7 @@ public class Ben_Boss : MonoBehaviour
             CombatTimer += Time.deltaTime;
         }
 
-        if (angle < 35.0f && Combat == false && Distance <= 35.0f)
+        if (angle < 45.0f && Combat == false && Distance <= 100.0f)
         {
             Debug.Log("Boss In Combat");
             Combat = true;
@@ -64,7 +67,7 @@ public class Ben_Boss : MonoBehaviour
             Combat = false;
             CombatTimer = 0.0f;
 
-            nav.speed = 4.0f;
+            nav.speed = 3.0f;
 
             GotoNextPoint();
         }
@@ -72,7 +75,7 @@ public class Ben_Boss : MonoBehaviour
         {
             if (!nav.pathPending && nav.remainingDistance < 1.0f)
             {
-                nav.speed = 4.0f;
+                nav.speed = 3.0f;
                 nav.isStopped = false;
 
                 GotoNextPoint();
@@ -91,7 +94,7 @@ public class Ben_Boss : MonoBehaviour
         {
             StartCharge = false;
             CombatTimer = 0.0f;
-            nav.speed = 4.0f;
+            nav.speed = 3.0f;
         }
     }
 
@@ -119,7 +122,7 @@ public class Ben_Boss : MonoBehaviour
 
             Debug.Log("CHARGE");
 
-            nav.speed = 16.0f;
+            nav.speed = 15.0f;
 
             //ChargeDestinationVector = (target.position - this.gameObject.transform.position);
             //ChargeDestinationVector = ChargeDestinationVector.normalized * 10.0f;
