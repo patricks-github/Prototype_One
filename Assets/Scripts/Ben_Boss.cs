@@ -16,7 +16,8 @@ public class Ben_Boss : MonoBehaviour
     protected Vector3 targetDir;
     protected float angle;
     public bool StartCharge = false;
-    
+    public float Distance;
+
 
     void Awake()
     {
@@ -34,13 +35,14 @@ public class Ben_Boss : MonoBehaviour
     {
         targetDir = target.position - this.gameObject.transform.position;
         angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
+        Distance = targetDir.magnitude;
 
         if (Combat)
         {
             CombatTimer += Time.deltaTime;
         }
 
-        if (angle < 20.0f && Combat == false)
+        if (angle < 35.0f && Combat == false && Distance <= 35.0f)
         {
             Debug.Log("Boss In Combat");
             Combat = true;
