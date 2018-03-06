@@ -17,6 +17,7 @@ public class Ben_Boss : MonoBehaviour
     public bool StartCharge = false;
     public float Distance;
     public uint HitPoints = 5;
+    private Boss_Movement ThisBossMovement;
 
     public bool IsDown = false;
     public float TimeIsDown = 8f;
@@ -30,6 +31,8 @@ public class Ben_Boss : MonoBehaviour
 
     void Start()
     {
+        ThisBossMovement = this.GetComponent<Boss_Movement>();
+        GamePlayManager.Instance.EnemiesRemaining++;
         nav.autoBraking = false;
     }
 
@@ -42,10 +45,18 @@ public class Ben_Boss : MonoBehaviour
             angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
             Distance = targetDir.magnitude;
 
+<<<<<<< HEAD
             if (Combat)
             {
                 CombatTimer += Time.deltaTime;
             }
+=======
+        if (angle < 45.0f && Combat == false && Distance <= 100.0f)
+        {
+            Debug.Log("Boss In Combat");
+            Combat = true;
+        }
+>>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
 
             if (angle < 35.0f && Combat == false && Distance <= 35.0f)
             {
@@ -65,11 +76,24 @@ public class Ben_Boss : MonoBehaviour
             {
                 Debug.Log("Boss Left Combat");
 
+<<<<<<< HEAD
                 StartCharge = false;
                 Combat = false;
                 CombatTimer = 0.0f;
 
                 nav.speed = 4.0f;
+=======
+            nav.speed = 3.0f;
+
+            GotoNextPoint();
+        }
+        else
+        {
+            if (!nav.pathPending && nav.remainingDistance < 1.0f)
+            {
+                nav.speed = 3.0f;
+                nav.isStopped = false;
+>>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
 
                 GotoNextPoint();
             }
@@ -112,7 +136,7 @@ public class Ben_Boss : MonoBehaviour
         {
             StartCharge = false;
             CombatTimer = 0.0f;
-            nav.speed = 4.0f;
+            nav.speed = 3.0f;
         }
     }
 
@@ -140,7 +164,7 @@ public class Ben_Boss : MonoBehaviour
 
             Debug.Log("CHARGE");
 
-            nav.speed = 16.0f;
+            nav.speed = 15.0f;
 
             //ChargeDestinationVector = (target.position - this.gameObject.transform.position);
             //ChargeDestinationVector = ChargeDestinationVector.normalized * 10.0f;
