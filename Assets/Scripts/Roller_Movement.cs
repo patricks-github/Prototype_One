@@ -18,6 +18,6 @@ public class Roller_Movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        RollerAnimator.SetFloat("speed", navMeshAgent.speed * speedDisplayModifier);
+        RollerAnimator.SetFloat("speed", navMeshAgent.speed /* speedDisplayModifier*/);
     }
 }
