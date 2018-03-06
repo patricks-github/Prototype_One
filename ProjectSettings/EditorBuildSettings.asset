@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Testing/Ben_Testing.unity
     guid: fdd2d072e43b4fb4bbc8ec33d9f61dc0
+  - enabled: 1
+    path: Assets/Scenes/Sam Level/Sam_Level.unity
+    guid: 17eb623b5a3f67f44a2334b62bf37bb3

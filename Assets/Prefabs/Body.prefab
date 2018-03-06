@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   VRCamera: {fileID: 0}
-  headTurnDistance: 75
+  headTurnDistance: 45
   turnSpeed: 1
 --- !u!114 &114997141770622800
 MonoBehaviour:

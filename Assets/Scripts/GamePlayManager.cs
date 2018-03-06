@@ -11,7 +11,7 @@ public class GamePlayManager : MonoBehaviour {
 
     public int PlayerHitPoints = 1;
     public int EnemiesRemaining = 0;
-    public bool IsBossDead = false;
+    public bool IsTrophyReturned = false;
 
     public bool AnEnemyHasBeenKilled = false;
 
@@ -42,16 +42,16 @@ public class GamePlayManager : MonoBehaviour {
             SceneManager.LoadScene("GameOver");
         }
 
-        if (EnemiesRemaining <= 0 && AnEnemyHasBeenKilled) {
-            //No Enemies Remaining
-            SceneManager.LoadScene("WinGame");
-        }
-
-        //if (BossCreatureReference == null) {
-        //    //Win Game, Chance Scenes
+        //if (EnemiesRemaining <= 0 && AnEnemyHasBeenKilled) {
+        //    //No Enemies Remaining
         //    SceneManager.LoadScene("WinGame");
         //}
-	}
+
+        if (IsTrophyReturned == true) {
+            //Win Game, Chance Scenes
+            SceneManager.LoadScene("WinGame");
+        }
+    }
 
 
     public void HitPointsLost(int _HitPointsLost){
