@@ -17,6 +17,7 @@ public class Ben_AI : MonoBehaviour
     protected float angle;
     protected float RandomWait;
     public float Distance;
+    public uint HitPoints = 1;
 
 
     void Awake()

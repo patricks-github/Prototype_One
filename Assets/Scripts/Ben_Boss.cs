@@ -16,6 +16,7 @@ public class Ben_Boss : MonoBehaviour
     protected float angle;
     public bool StartCharge = false;
     public float Distance;
+    public uint HitPoints = 5;
 
 
     void Awake()

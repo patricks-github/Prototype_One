@@ -29,9 +29,34 @@ public class Arrow : MonoBehaviour
         if (_other.gameObject.tag == "ValidHitPoint" && isTeleportArrow == false && isFired)
         {
             Debug.Log("HIT! :)");
-            Destroy(_other.transform.root.gameObject);
-            GamePlayManager.Instance.EnemiesRemaining--;
-            GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
+            if (_other.gameObject.tag == "Ben_Boss")
+            {
+                if (_other.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
+                {
+                    Destroy(_other.transform.root.gameObject);
+                    GamePlayManager.Instance.EnemiesRemaining--;
+                    GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
+                }
+                else
+                {
+                    _other.GetComponent<Ben_Boss>().HitPoints -= 1;
+                }
+                
+            }
+            else if (_other.gameObject.tag == "Ben_AI")
+            {               
+                if (_other.GetComponent<Ben_AI>().HitPoints - 1 == 0)
+                {
+                    Destroy(_other.transform.root.gameObject);
+                    GamePlayManager.Instance.EnemiesRemaining--;
+                    GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
+                }
+                else
+                {
+                    _other.GetComponent<Ben_AI>().HitPoints -= 1;
+                }
+
+            }
         }
 
         //Arrow hit solid surface, play break animations / effects
