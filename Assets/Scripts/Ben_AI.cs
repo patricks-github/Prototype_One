@@ -18,6 +18,7 @@ public class Ben_AI : MonoBehaviour
     protected float RandomWait;
     public float Distance;
     public uint HitPoints = 1;
+    private Roller_Movement ThisRollerMovement;
 
 
     void Awake()
@@ -29,6 +30,7 @@ public class Ben_AI : MonoBehaviour
 
     void Start()
     {
+        ThisRollerMovement = this.GetComponent<Roller_Movement>();
         GamePlayManager.Instance.EnemiesRemaining++;
         nav.autoBraking = false;
     }
@@ -80,10 +82,12 @@ public class Ben_AI : MonoBehaviour
             {
                 if (nav.remainingDistance < 1.5f)
                 {
+                    ThisRollerMovement.speedDisplayModifier = 0.0f;
                     nav.isStopped = true;
                 }
                 if (WaitTimer >= 5)
                 {
+                    ThisRollerMovement.speedDisplayModifier = 0.5f;
                     nav.isStopped = false;
                     GotoNextPoint();
                 }

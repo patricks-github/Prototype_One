@@ -20,7 +20,7 @@ public class Boss_Movement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        BossAnimator.SetFloat("speed", navMeshAgent.velocity.magnitude * speedDisplayModifier);
+        BossAnimator.SetFloat("speed", navMeshAgent.speed * speedDisplayModifier);       
     }
 
     public void AttackAnimation()
