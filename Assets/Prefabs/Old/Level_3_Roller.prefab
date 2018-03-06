@@ -1899,6 +1899,7 @@ MonoBehaviour:
   - {fileID: 4182109903918610}
   target: {fileID: 0}
   Distance: 0
+  HitPoints: 1
 --- !u!137 &137031342235169414
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
