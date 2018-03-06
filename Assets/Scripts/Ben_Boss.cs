@@ -13,7 +13,7 @@ public class Ben_Boss : MonoBehaviour
     public Transform target;
     protected Vector3 ChargeDestinationVector;
     protected Vector3 targetDir;
-    protected float angle;
+    public float angle;
     public bool StartCharge = false;
     public float Distance;
     public uint HitPoints = 5;

@@ -29,9 +29,9 @@ public class Arrow : MonoBehaviour
         if (_other.gameObject.tag == "ValidHitPoint" && isTeleportArrow == false && isFired)
         {
             Debug.Log("HIT! :)");
-            if (_other.gameObject.tag == "Ben_Boss")
+            if (_other.gameObject.transform.root.gameObject.tag == "Ben_Boss")
             {
-                if (_other.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
+                if (_other.transform.parent.parent.parent.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
                 {
                     Destroy(_other.transform.root.gameObject);
                     GamePlayManager.Instance.EnemiesRemaining--;
@@ -39,13 +39,14 @@ public class Arrow : MonoBehaviour
                 }
                 else
                 {
-                    _other.GetComponent<Ben_Boss>().HitPoints -= 1;
+                    _other.transform.parent.parent.parent.gameObject.GetComponent<Ben_Boss>().HitPoints -= 1;
+
                 }
                 
             }
-            else if (_other.gameObject.tag == "Ben_AI")
+            else 
             {               
-                if (_other.GetComponent<Ben_AI>().HitPoints - 1 == 0)
+                if (_other.transform.parent.parent.parent.gameObject.GetComponent<Ben_AI>().HitPoints - 1 == 0)
                 {
                     Destroy(_other.transform.root.gameObject);
                     GamePlayManager.Instance.EnemiesRemaining--;
@@ -53,10 +54,11 @@ public class Arrow : MonoBehaviour
                 }
                 else
                 {
-                    _other.GetComponent<Ben_AI>().HitPoints -= 1;
+                    _other.transform.parent.parent.parent.gameObject.GetComponent<Ben_AI>().HitPoints -= 1;
                 }
 
             }
+            Destroy(this);
         }
 
         //Arrow hit solid surface, play break animations / effects

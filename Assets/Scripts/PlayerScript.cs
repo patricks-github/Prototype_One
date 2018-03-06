@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour {
     void OnTriggerEnter(Collider _Collider)
     {
         Debug.Log("ENTERTED TRIGGER AREA");
-        if (_Collider.gameObject.transform.root.gameObject.tag == "Enemy")
+        if (_Collider.gameObject.transform.root.gameObject.tag == "Enemy" || _Collider.gameObject.transform.root.gameObject.tag == "Ben_Boss")
         {
             //die
             Debug.Log("LOST HEALTH");

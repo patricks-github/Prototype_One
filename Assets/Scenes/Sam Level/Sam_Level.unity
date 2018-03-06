@@ -7048,6 +7048,10 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -42.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1018448151516638, guid: 692051cb9cf46b642968ae3deacd401f, type: 2}
+      propertyPath: m_TagString
+      value: Ben_Boss
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 692051cb9cf46b642968ae3deacd401f, type: 2}
   m_IsPrefabParent: 0
