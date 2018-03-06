@@ -27,7 +27,7 @@ public class AttachableObject : MonoBehaviour {
             ObjectHasBeenPickedUp = true;
             IsBeingHeld = true;
             this.GetComponent<Rigidbody>().useGravity = true;
-            this.GetComponent<BoxCollider>().isTrigger = true;
+            this.GetComponent<Collider>().isTrigger = true;
             IsAttached = false;
             this.GetComponent<Rigidbody>().freezeRotation = false;
         }
@@ -38,7 +38,7 @@ public class AttachableObject : MonoBehaviour {
                 //Object Is In Body, Attach to player
                 VRBodyObject.GetComponent<VRBody>().AttatchObjectToBody(this.gameObject);
                 this.GetComponent<Rigidbody>().useGravity = false;
-                this.GetComponent<BoxCollider>().isTrigger = true;
+                this.GetComponent<Collider>().isTrigger = true;
                 IsAttached = true;
                 this.GetComponent<Rigidbody>().velocity = Vector3.zero;
                 this.GetComponent<Rigidbody>().freezeRotation = true;
@@ -47,7 +47,7 @@ public class AttachableObject : MonoBehaviour {
 
             if (IsAttached == false && !IsInBody)
             {
-                this.GetComponent<BoxCollider>().isTrigger = false;
+                this.GetComponent<Collider>().isTrigger = false;
             }
         }
     }

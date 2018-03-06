@@ -58,6 +58,10 @@ public class GamePlayManager : MonoBehaviour {
         PlayerHitPoints -= _HitPointsLost;
     }
 
+
+    public void GoToScene(string _String) {
+        SceneManager.LoadScene(_String);
+    }
     
 
 }

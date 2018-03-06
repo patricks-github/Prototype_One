@@ -45,18 +45,16 @@ public class Ben_Boss : MonoBehaviour
             angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
             Distance = targetDir.magnitude;
 
-<<<<<<< HEAD
             if (Combat)
             {
                 CombatTimer += Time.deltaTime;
             }
-=======
-        if (angle < 45.0f && Combat == false && Distance <= 100.0f)
-        {
-            Debug.Log("Boss In Combat");
-            Combat = true;
-        }
->>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
+
+            if (angle < 45.0f && Combat == false && Distance <= 50.0f)
+            {
+                Debug.Log("Boss In Combat");
+                Combat = true;
+            }
 
             if (angle < 35.0f && Combat == false && Distance <= 35.0f)
             {
@@ -76,24 +74,12 @@ public class Ben_Boss : MonoBehaviour
             {
                 Debug.Log("Boss Left Combat");
 
-<<<<<<< HEAD
                 StartCharge = false;
                 Combat = false;
                 CombatTimer = 0.0f;
 
                 nav.speed = 4.0f;
-=======
-            nav.speed = 3.0f;
-
-            GotoNextPoint();
-        }
-        else
-        {
-            if (!nav.pathPending && nav.remainingDistance < 1.0f)
-            {
                 nav.speed = 3.0f;
-                nav.isStopped = false;
->>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
 
                 GotoNextPoint();
             }
@@ -101,10 +87,20 @@ public class Ben_Boss : MonoBehaviour
             {
                 if (!nav.pathPending && nav.remainingDistance < 1.0f)
                 {
-                    nav.speed = 4.0f;
+                    nav.speed = 3.0f;
                     nav.isStopped = false;
 
                     GotoNextPoint();
+                }
+                else
+                {
+                    if (!nav.pathPending && nav.remainingDistance < 1.0f)
+                    {
+                        nav.speed = 4.0f;
+                        nav.isStopped = false;
+
+                        GotoNextPoint();
+                    }
                 }
             }
         }
