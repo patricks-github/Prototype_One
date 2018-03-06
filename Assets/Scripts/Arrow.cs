@@ -29,17 +29,19 @@ public class Arrow : MonoBehaviour
         if (_other.gameObject.tag == "ValidHitPoint" && isTeleportArrow == false && isFired)
         {
             Debug.Log("HIT! :)");
-            if (_other.gameObject.transform.root.gameObject.tag == "Ben_Boss")
+            if (_other.gameObject.transform.root.gameObject.tag == "Ben_Boss" && _other.transform.root.gameObject.GetComponent<Ben_Boss>().IsDown == false)
             {
-                if (_other.transform.parent.parent.parent.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
+                if (_other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0 )
                 {
-                    Destroy(_other.transform.root.gameObject);
-                    GamePlayManager.Instance.EnemiesRemaining--;
-                    GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
+                    _other.transform.root.gameObject.GetComponent<Ben_Boss>().SetIsDown();
+                    //Destroy(_other.transform.root.gameObject);
+                    //GamePlayManager.Instance.EnemiesRemaining--;
+                    //GamePlayManager.Instance.AnEnemyHasBeenKilled = true;
+
                 }
                 else
                 {
-                    _other.transform.parent.parent.parent.gameObject.GetComponent<Ben_Boss>().HitPoints -= 1;
+                    _other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints -= 1;
 
                 }
                 

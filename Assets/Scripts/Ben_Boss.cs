@@ -19,6 +19,9 @@ public class Ben_Boss : MonoBehaviour
     public uint HitPoints = 5;
     private Boss_Movement ThisBossMovement;
 
+    public bool IsDown = false;
+    public float TimeIsDown = 8f;
+
 
     void Awake()
     {
@@ -36,37 +39,50 @@ public class Ben_Boss : MonoBehaviour
 
     public void Update()
     {
-        targetDir = target.position - this.gameObject.transform.position;
-        angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
-        Distance = targetDir.magnitude;
-
-        if (Combat)
+        if (!IsDown)
         {
-            CombatTimer += Time.deltaTime;
-        }
+            targetDir = target.position - this.gameObject.transform.position;
+            angle = Vector3.Angle(targetDir, this.gameObject.transform.forward);
+            Distance = targetDir.magnitude;
 
+<<<<<<< HEAD
+            if (Combat)
+            {
+                CombatTimer += Time.deltaTime;
+            }
+=======
         if (angle < 45.0f && Combat == false && Distance <= 100.0f)
         {
             Debug.Log("Boss In Combat");
             Combat = true;
         }
+>>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
 
-        if (Combat && (CombatTimer < 21.0f))
-        {
-            if (Combat && (CombatTimer > 1.5f) && StartCharge == false)
+            if (angle < 35.0f && Combat == false && Distance <= 35.0f)
             {
-                StartCharge = true;
-                Charge(target.position);
+                Debug.Log("Boss In Combat");
+                Combat = true;
             }
-        }
-        else if (Combat && (CombatTimer > 21.0f))
-        {
-            Debug.Log("Boss Left Combat");
 
-            StartCharge = false;
-            Combat = false;
-            CombatTimer = 0.0f;
+            if (Combat && (CombatTimer < 21.0f))
+            {
+                if (Combat && (CombatTimer > 1.5f) && StartCharge == false)
+                {
+                    StartCharge = true;
+                    Charge(target.position);
+                }
+            }
+            else if (Combat && (CombatTimer > 21.0f))
+            {
+                Debug.Log("Boss Left Combat");
 
+<<<<<<< HEAD
+                StartCharge = false;
+                Combat = false;
+                CombatTimer = 0.0f;
+
+                nav.speed = 4.0f;
+=======
             nav.speed = 3.0f;
 
             GotoNextPoint();
@@ -77,10 +93,36 @@ public class Ben_Boss : MonoBehaviour
             {
                 nav.speed = 3.0f;
                 nav.isStopped = false;
+>>>>>>> 0985a8f9be91caa3971b533dd2423c8082c15506
 
                 GotoNextPoint();
             }
+            else
+            {
+                if (!nav.pathPending && nav.remainingDistance < 1.0f)
+                {
+                    nav.speed = 4.0f;
+                    nav.isStopped = false;
+
+                    GotoNextPoint();
+                }
+            }
         }
+    }
+
+
+    public void SetIsDown() {
+        IsDown = true;
+        nav.isStopped = true;
+        this.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+        Invoke("Recover", TimeIsDown);
+
+    }
+
+    private void Recover() {
+        IsDown = false;
+        nav.isStopped = false;
+        this.transform.rotation = Quaternion.identity;
     }
 
 
