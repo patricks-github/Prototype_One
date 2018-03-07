@@ -66,8 +66,13 @@ public class Arrow : MonoBehaviour
         //Arrow hit solid surface, play break animations / effects
         if (_other.gameObject.tag == "ArrowBreak" && isFired == true)
         {
+            isFired = false;
             Debug.Log("Arrow break");
-            Destroy(this);
+            this.GetComponent<Collider>().enabled = false;
+            this.GetComponent<Rigidbody>().Sleep();
+            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<ParticleSystem>().Play();
+            Invoke("KillMeNow", 1.0f);
         }
         
         //Ben - Arrow hit an interactable, adding arrows to your total
@@ -127,6 +132,11 @@ public class Arrow : MonoBehaviour
         {           
             Destroy(this.gameObject);
         }
+    }
+
+    private void KillMeNow()
+    {
+        Destroy(this);
     }
 }
 
