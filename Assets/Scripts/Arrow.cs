@@ -70,7 +70,7 @@ public class Arrow : MonoBehaviour
             Debug.Log("Arrow break");
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().Sleep();
-            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<ParticleSystem>().Play();
             Invoke("KillMeNow", 1.0f);
         }
