@@ -9,6 +9,10 @@ public class Arrow : MonoBehaviour
     public bool isTeleportArrow = false;
     public GameObject ThisArrowTip;
 
+    [SerializeField] AudioSource ArrowHitSound;
+    [SerializeField] AudioSource ArrowBreakSound;
+
+
     [SerializeField] float MaxTimeAlive = 5.0f;
 
     private float TimeAlive;
@@ -29,6 +33,7 @@ public class Arrow : MonoBehaviour
         if (_other.gameObject.tag == "ValidHitPoint" && isTeleportArrow == false && isFired)
         {
             Debug.Log("HIT! :)");
+            ArrowHitSound.PlayOneShot(ArrowHitSound.clip);
             if (_other.gameObject.transform.root.gameObject.tag == "Ben_Boss" && _other.transform.root.gameObject.GetComponent<Ben_Boss>().IsDown == false)
             {
                 if (_other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
@@ -66,6 +71,7 @@ public class Arrow : MonoBehaviour
         //Arrow hit solid surface, play break animations / effects
         if (_other.gameObject.tag == "ArrowBreak" && isFired == true)
         {
+            ArrowBreakSound.PlayOneShot(ArrowBreakSound.clip);
             isFired = false;
             Debug.Log("Arrow break");
             this.GetComponent<Collider>().enabled = false;
