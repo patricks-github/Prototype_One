@@ -110,15 +110,19 @@ public class Ben_Boss : MonoBehaviour
     public void SetIsDown() {
         IsDown = true;
         nav.isStopped = true;
-        this.transform.localRotation = Quaternion.Euler(0f, 0f, 90f);
+        nav.enabled = false;
+        this.transform.position += new Vector3(0.0f, 0.6f, 0.0f);
+        this.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
         Invoke("Recover", TimeIsDown);
 
     }
 
     private void Recover() {
         IsDown = false;
+        nav.enabled = true;
         nav.isStopped = false;
         this.transform.rotation = Quaternion.identity;
+        this.transform.position += new Vector3(0.0f, -0.6f, 0.0f);
     }
 
 

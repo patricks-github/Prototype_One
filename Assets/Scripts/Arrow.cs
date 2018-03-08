@@ -76,7 +76,7 @@ public class Arrow : MonoBehaviour
             Debug.Log("Arrow break");
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().Sleep();
-            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<ParticleSystem>().Play();
             Invoke("KillMeNow", 1.0f);
         }
@@ -129,6 +129,7 @@ public class Arrow : MonoBehaviour
         // Debug.Log("Teleport");
         if (collision.gameObject.tag == "Floor" && isTeleportArrow)
         {
+            ArrowBreakSound.PlayOneShot(ArrowBreakSound.clip);
             Vector3 PositionToMoveToo = this.GetComponentInChildren<Transform>().position;
             PositionToMoveToo.y = this.GetComponentInChildren<Transform>().position.y;
             TeleportManager.Instance.TeleportToLocation(PositionToMoveToo);
@@ -138,16 +139,17 @@ public class Arrow : MonoBehaviour
         {
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().Sleep();
-            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<ParticleSystem>().Play();
             Invoke("KillMeNow", 1.0f);
         }
 
         if (collision.gameObject.tag == "BossWall")
         {
+            ArrowBreakSound.PlayOneShot(ArrowBreakSound.clip);
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().Sleep();
-            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<ParticleSystem>().Play();
             Invoke("KillMeNow", 1.0f);
         }
