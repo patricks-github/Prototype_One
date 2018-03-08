@@ -23,7 +23,7 @@ public class Ben_AI : MonoBehaviour
 
     void Awake()
     {
-        RandomWait = Random.Range(15.0f, 25.0f);
+        RandomWait = Random.Range(15.0f, 20.0f);
         nav = GetComponent<NavMeshAgent>();
     }
 
@@ -51,7 +51,7 @@ public class Ben_AI : MonoBehaviour
             CombatTimer += Time.deltaTime;
         }
 
-        if (angle < 20.0f && Combat == false && Distance <= 20.0f)
+        if (angle < 30.0f && Combat == false && Distance <= 30.0f)
         {
            // Debug.Log(angle);
             Debug.Log("AI In Combat");
@@ -87,7 +87,7 @@ public class Ben_AI : MonoBehaviour
                 }
                 if (WaitTimer >= 5)
                 {
-                    ThisRollerMovement.speedDisplayModifier = 0.5f;
+                    ThisRollerMovement.speedDisplayModifier = 1.0f;
                     nav.isStopped = false;
                     GotoNextPoint();
                 }
