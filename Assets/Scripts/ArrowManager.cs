@@ -101,6 +101,8 @@ public class ArrowManager : MonoBehaviour
 
         //Rotate bow
 
+        Bow.transform.rotation = Quaternion.LookRotation(BoWHand.transform.position - OffHand.transform.position, BoWHand.transform.TransformDirection(Vector3.forward));
+
         //Vector3 FowardVector = Vector3.Normalize(Bow.transform.position - trackedObj.transform.position);
         //Bow.transform.LookAt(this.gameObject.transform.position + FowardVector);
         //Bow.transform.rotation = Quaternion.LookRotation(Bow.transform.position - trackedObj.transform.position, Bow.transform.TransformDirection(Vector3.forward));
@@ -128,6 +130,8 @@ public class ArrowManager : MonoBehaviour
         r.velocity = currentArrow.transform.forward * (FinalDrawDistance / MaxDrawDistance) * ReleaseStrength;
         r.useGravity = true;
         r.isKinematic = false;
+
+        Bow.transform.localRotation = Quaternion.Euler(50f, 0f, 0f); 
 
        // Bow.transform.localRotation = Quaternion.identity;
         Bow.GetComponent<CompoundBowManager>().ReleaseBowAnimation();

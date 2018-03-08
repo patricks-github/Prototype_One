@@ -24,6 +24,7 @@ public class CompoundBowManager : MonoBehaviour
 
     Vector3 OriginalScale;
     Vector3 ArrowDisplayScale;
+    public Quaternion HeldBaseRotation;
 
     public bool IsBowInLeftHand = false;
 
@@ -66,7 +67,9 @@ public class CompoundBowManager : MonoBehaviour
             ArrowDisplay.enabled = true;
             ArrowDisplay.GetComponentInChildren<Text>().text = ArrowManager.Instance.ArrowsLeft.ToString() + "/" + ArrowManager.Instance.TotalArrows.ToString();
 
-           
+
+            HeldBaseRotation = this.transform.localRotation;
+
 
             //Bow In the left hand
             if (this.gameObject.transform.parent.parent.parent.parent.gameObject.name == "Controller (left)")
