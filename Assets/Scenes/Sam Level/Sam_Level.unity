@@ -6247,7 +6247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7c3772567f4fe4f8f1640fd7aca133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedDisplayModifier: 1
+  speedDisplayModifier: 0.75
 --- !u!95 &485200720
 Animator:
   serializedVersion: 3
@@ -6332,7 +6332,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 2
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -12744,7 +12744,7 @@ Prefab:
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 1019
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 224000012623161658, guid: d46cf6b1ad9d84a48ae7548a2a6b41b3,
         type: 2}
