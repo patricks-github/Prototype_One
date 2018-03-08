@@ -31,7 +31,7 @@ public class Arrow : MonoBehaviour
             Debug.Log("HIT! :)");
             if (_other.gameObject.transform.root.gameObject.tag == "Ben_Boss" && _other.transform.root.gameObject.GetComponent<Ben_Boss>().IsDown == false)
             {
-                if (_other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0 )
+                if (_other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints - 1 == 0)
                 {
                     _other.transform.root.gameObject.GetComponent<Ben_Boss>().SetIsDown();
                     //Destroy(_other.transform.root.gameObject);
@@ -44,10 +44,10 @@ public class Arrow : MonoBehaviour
                     _other.transform.root.gameObject.GetComponent<Ben_Boss>().HitPoints -= 1;
 
                 }
-                
+
             }
-            else 
-            {               
+            else
+            {
                 if (_other.transform.parent.parent.parent.gameObject.GetComponent<Ben_AI>().HitPoints - 1 == 0)
                 {
                     Destroy(_other.transform.root.gameObject);
@@ -70,11 +70,11 @@ public class Arrow : MonoBehaviour
             Debug.Log("Arrow break");
             this.GetComponent<Collider>().enabled = false;
             this.GetComponent<Rigidbody>().Sleep();
-            this.GetComponent<MeshRenderer>().enabled = false;
+            this.GetComponent<Mesh>().Clear();
             this.GetComponent<ParticleSystem>().Play();
             Invoke("KillMeNow", 1.0f);
         }
-        
+
         //Ben - Arrow hit an interactable, adding arrows to your total
         if (_other.gameObject.tag == "ArrowInteractable" && isFired)
         {
@@ -96,7 +96,7 @@ public class Arrow : MonoBehaviour
             if (TimeAlive >= MaxTimeAlive)
             {
                 Destroy(this.gameObject);
-                
+
             }
         }
 
@@ -129,8 +129,21 @@ public class Arrow : MonoBehaviour
             Destroy(this.gameObject);
         }
         else if (collision.gameObject.tag == "Floor" && !isTeleportArrow)
-        {           
-            Destroy(this.gameObject);
+        {
+            this.GetComponent<Collider>().enabled = false;
+            this.GetComponent<Rigidbody>().Sleep();
+            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<ParticleSystem>().Play();
+            Invoke("KillMeNow", 1.0f);
+        }
+
+        if (collision.gameObject.tag == "BossWall")
+        {
+            this.GetComponent<Collider>().enabled = false;
+            this.GetComponent<Rigidbody>().Sleep();
+            this.GetComponent<Mesh>().Clear();
+            this.GetComponent<ParticleSystem>().Play();
+            Invoke("KillMeNow", 1.0f);
         }
     }
 
@@ -139,16 +152,3 @@ public class Arrow : MonoBehaviour
         Destroy(this);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
