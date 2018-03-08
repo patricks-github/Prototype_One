@@ -9,7 +9,14 @@ public class ButtonChangeScene : MonoBehaviour {
 
     private void LoadThisScene(string _SceneToLoad) {
         if (SceneToLoad != "")
-            SceneManager.LoadScene(_SceneToLoad);
+            if (SceneToLoad == "Quit")
+            {
+                //Quit
+                Debug.Log("Quitting Game");
+                Application.Quit();
+            }
+            else
+                SceneManager.LoadScene(_SceneToLoad);
         else
             Debug.LogWarning("Button Change Scene - No Scene has been Selected");
     }
